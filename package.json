@@ -1,0 +1,44 @@
+{
+  "name": "vue-sdk",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build_app": "vue-cli-service build",
+    "build": "rollup -c rollup.config.js",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@descope/web-component": "^2.0.17",
+    "@vue/web-component-wrapper": "^1.3.0",
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "jest": "^27.0.5",
+    "prettier": "^2.4.1",
+    "rollup": "^2.79.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-vue": "^6.0.0",
+    "ts-jest": "^27.0.4",
+    "typescript": "~4.5.5"
+  }
+}
