@@ -39,14 +39,14 @@ export default [
 		]
 	},
 	{
-		input: './dist/dts/index.d.ts',
+		input: './dist/dts/src/index.d.ts',
 		output: [{ file: packageJson.types, format: 'esm' }],
 		plugins: [
 			dts(),
-			// del({
-			// 	hook: 'buildEnd',
-			// 	targets: ['./dist/dts']
-			// })
+			del({
+				hook: 'buildEnd',
+				targets: ['./dist/dts']
+			})
 		]
 	}
 ];

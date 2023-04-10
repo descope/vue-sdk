@@ -1,6 +1,6 @@
 // src/plugins/auth.js
 
-import { App, computed, readonly, ref, unref } from 'vue';
+import { App, Ref, computed, readonly, ref, unref } from 'vue';
 import createSdk from '@descope/web-js-sdk';
 import { DESCOPE_INJECTION_KEY, baseHeaders } from './constants';
 import { UserData, type Options } from './types';
@@ -21,7 +21,7 @@ export default {
 		const sessionToken = ref('');
 
 		const isUserLoading = ref<boolean | null>(null);
-		const user = ref<UserData | null>(null);
+		const user = ref<UserData>(null);
 
 		sdk.onSessionTokenChange((s) => {
 			sessionToken.value = s;
@@ -70,7 +70,7 @@ export default {
 			user: {
 				fetchUser,
 				isLoading: readonly(isUserLoading),
-				user: readonly(user),
+				user: readonly(user) as Ref<UserData>,
 				isFetchUserWasNeverCalled
 			},
 			sdk,

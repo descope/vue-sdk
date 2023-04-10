@@ -8,6 +8,7 @@ export type Options = {
 };
 
 type Sdk = ReturnType<typeof createSdk>;
+
 export type UserData = Exclude<
 	Awaited<ReturnType<Sdk['me']>>['data'],
 	undefined
@@ -23,7 +24,7 @@ type Session = {
 type User = {
 	fetchUser: () => Promise<void>;
 	isLoading: Ref<boolean | null>;
-	user: Readonly<Ref<UserData>>;
+	user: Ref<UserData>;
 	isFetchUserWasNeverCalled: Ref<boolean>;
 };
 
