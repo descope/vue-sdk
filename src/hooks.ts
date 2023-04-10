@@ -19,7 +19,7 @@ export const useSession = () => {
 				session.isLoading.value || session.isFetchSessionWasNeverCalled.value
 		),
 		sessionToken: session.session,
-		isAuthenticated: !!session.session
+		isAuthenticated: computed(() => !!session.session)
 	};
 };
 

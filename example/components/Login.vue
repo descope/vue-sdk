@@ -8,7 +8,6 @@
 		<button @click="toggleState">Click</button>
 		<Descope
 			flowId="sign-in"
-			debug="false"
 			theme="dark"
 			@error="handleEvent"
 			@success="handleEvent"
@@ -18,7 +17,7 @@
 </template>
 
 <script>
-import { Descope, useSession, useUser } from '../../src';
+import { Descope, useSession, useUser } from '../../dist';
 import { ref } from 'vue';
 
 export default {

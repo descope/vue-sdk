@@ -11,6 +11,8 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
+    "declaration": true,
+		"declarationDir": "dist/dts",
     "baseUrl": ".",
     "types": [
       "webpack-env",
@@ -30,14 +32,9 @@
     ]
   },
   "include": [
-    "example/**/*.ts",
-    "example/**/*.tsx",
-    "example/**/*.vue",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -23,8 +23,7 @@ type Session = {
 type User = {
 	fetchUser: () => Promise<void>;
 	isLoading: Ref<boolean | null>;
-	// user: Readonly<Ref<UserData>>;
-	user: any;
+	user: Readonly<Ref<UserData>>;
 	isFetchUserWasNeverCalled: Ref<boolean>;
 };
 
