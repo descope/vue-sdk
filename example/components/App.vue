@@ -1,17 +1,15 @@
 <template>
-	<HelloWorld />
+	<div id="routes">
+		<router-link to="/">Home</router-link>
+		<router-link to="/login">Login</router-link>
+	</div>
+	<router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-
-export default defineComponent({
-	name: 'App',
-	components: {
-		HelloWorld
-	}
-});
+export default {
+	name: 'App'
+};
 </script>
 
 <style>
@@ -21,6 +19,10 @@ export default defineComponent({
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
-	margin-top: 60px;
+}
+
+#routes {
+	display: flex;
+	justify-content: space-evenly;
 }
 </style>

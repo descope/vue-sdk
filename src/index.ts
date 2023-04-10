@@ -1,2 +1,3 @@
-export { default as ContextProvider } from './components/ContextProvider.vue';
-export { default as DescopeComponent } from './components/DescopeComponent.vue';
+export { default as Descope } from './Descope.vue';
+export { useDescope, useSession, useUser } from './hooks';
+export { default, routeGuard } from './plugin';
