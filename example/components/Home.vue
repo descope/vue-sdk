@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { useSession } from '../../dist';
+import { useSession } from '../../src';
 
 export default {
 	// eslint-disable-next-line vue/multi-word-component-names

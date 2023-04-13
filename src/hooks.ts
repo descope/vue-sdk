@@ -2,12 +2,22 @@
 import { computed, inject, watch } from 'vue';
 import { DESCOPE_INJECTION_KEY } from './constants';
 
-export const useOptions = () => inject(DESCOPE_INJECTION_KEY)!.options;
+const injectDescope = () => {
+	const context = inject(DESCOPE_INJECTION_KEY);
+	if (!context)
+		throw Error(
+			'Missing Descope context, make sure you are using the Descope plugin'
+		);
 
-export const useDescope = () => inject(DESCOPE_INJECTION_KEY)!.sdk;
+	return context;
+};
+
+export const useOptions = () => injectDescope().options;
+
+export const useDescope = () => injectDescope().sdk;
 
 export const useSession = () => {
-	const { session } = inject(DESCOPE_INJECTION_KEY)!;
+	const { session } = injectDescope();
 
 	if (session.isFetchSessionWasNeverCalled.value) {
 		session.fetchSession();
@@ -24,7 +34,7 @@ export const useSession = () => {
 };
 
 export const useUser = () => {
-	const { user, session } = inject(DESCOPE_INJECTION_KEY)!;
+	const { user, session } = injectDescope();
 
 	watch(session.session, () => {
 		if (user.isFetchUserWasNeverCalled.value && session.session.value) {

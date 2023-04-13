@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { Descope, useSession, useUser } from '../../dist';
+import { Descope, useSession, useUser } from '../../src';
 import { ref } from 'vue';
 
 export default {

@@ -10,9 +10,9 @@
 			:telemetryKey.attr="telemetryKey"
 			:redirect-url="redirectUrl"
 			:auto-focus="autoFocus"
-			@success="handleSuccess"
-			@error="$emit('error', $event)"
-			@page-updated="$emit('page-updated', $event)"
+			@success="onSuccess"
+			@error="onError"
+			@page-updated="onPageUpdated"
 		/>
 	</div>
 </template>
@@ -58,7 +58,7 @@ export default {
 		const { projectId, baseUrl, sessionTokenViaCookie } = useOptions();
 		const sdk = useDescope();
 
-		const handleSuccess = async (e: CustomEvent) => {
+		const onSuccess = async (e: CustomEvent) => {
 			await sdk.httpClient.hooks?.afterRequest?.(
 				{} as RequestConfig,
 				new Response(JSON.stringify(e.detail))
@@ -66,12 +66,16 @@ export default {
 
 			emit('success', e);
 		};
+		const onError = (e: Event) => emit('error', e);
+		const onPageUpdated = (e: Event) => emit('page-updated', e);
 
 		return {
 			projectId,
 			baseUrl,
 			sessionTokenViaCookie,
-			handleSuccess
+			onSuccess,
+			onError,
+			onPageUpdated
 		};
 	}
 };
