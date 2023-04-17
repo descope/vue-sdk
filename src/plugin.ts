@@ -54,7 +54,7 @@ export default {
 		// we need to share some logic between the plugin and the routeGuard
 		// maybe there is a better way to do it
 		routeGuardInternal.value = async () => {
-			if (isFetchSessionWasNeverCalled.value) {
+			if (!sessionToken.value && isFetchSessionWasNeverCalled.value) {
 				await fetchSession();
 			}
 			return !!unref(sessionToken);

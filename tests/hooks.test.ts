@@ -17,7 +17,7 @@ describe('hooks', () => {
 		injectMock.mockReturnValue({
 			sdk: 'sdk',
 			options: 'options',
-			user: { user: 'user', isLoading: { value: true } },
+			user: { user: 'user', isLoading: { value: true }, isFetchUserWasNeverCalled: {value: true } },
 			session: {
 				session: 'session',
 				isLoading: { value: true },

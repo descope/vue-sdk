@@ -3,8 +3,8 @@ import type { Ref } from 'vue';
 
 export type Options = {
 	projectId: string;
-	baseUrl: string;
-	sessionTokenViaCookie: boolean;
+	baseUrl?: string;
+	sessionTokenViaCookie?: boolean;
 };
 
 type Sdk = ReturnType<typeof createSdk>;
