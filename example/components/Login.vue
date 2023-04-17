@@ -1,14 +1,14 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-	<div>
-		<div v-if="isLoading">Loading</div>
-		<div v-else>{{ sessionToken }}</div>
-		<div v-if="isUserLoading">Loading User</div>
-		<div v-else>{{ user }}</div>
-		<button @click="toggleState">Click</button>
+	<div class="wrapper">
+		<p v-if="isLoading">Loading...</p>
+		<div v-else-if="isAuthenticated">
+			<h1>You are already authenticated</h1>
+		</div>
 		<Descope
+			v-else
 			flowId="sign-in"
-			theme="dark"
+			theme="light"
 			@error="handleEvent"
 			@success="handleEvent"
 			@page-updated="handleEvent"
@@ -17,36 +17,30 @@
 </template>
 
 <script>
-import { Descope, useSession, useUser } from '../../src';
-import { ref } from 'vue';
+import { Descope, useSession } from '../../src';
 
 export default {
 	components: {
 		Descope
 	},
 	setup() {
-		const flowName = ref('sign-in');
-
-		function toggleState() {
-			flowName.value = 'sign-up';
-		}
-
-		const session = useSession();
-		const user = useUser();
-
 		const handleEvent = (e) => {
-			console.log(e, 'LOGIN!!');
+			console.log('Got new event', e);
 		};
 
+		const session = useSession();
+
 		return {
-			flowName,
-			toggleState,
+			handleEvent,
 			isLoading: session.isLoading,
-			sessionToken: session.sessionToken,
-			isUserLoading: user.isLoading,
-			user: user.user,
-			handleEvent
+			isAuthenticated: session.isAuthenticated
 		};
 	}
 };
 </script>
+
+<style>
+.wrapper {
+	margin: 20px;
+}
+</style>

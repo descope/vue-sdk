@@ -1,22 +1,22 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
 	<div>
-		<h1>Welcome to the Home Page!</h1>
-		<div v-if="isLoading">Loading</div>
+		<h1 v-if="user">Welcome to the Home Page {{ user.name || user.email }}!</h1>
+		<div v-else>Loading</div>
 	</div>
 </template>
 
 <script>
-import { useSession } from '../../src';
+import { useUser } from '../../src';
 
 export default {
 	// eslint-disable-next-line vue/multi-word-component-names
 	name: 'Home',
 	setup() {
-		const session = useSession();
+		const user = useUser();
 
 		return {
-			isLoading: session.isLoading
+			user: user.user
 		};
 	}
 };

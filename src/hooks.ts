@@ -29,18 +29,22 @@ export const useSession = () => {
 				session.isLoading.value || session.isFetchSessionWasNeverCalled.value
 		),
 		sessionToken: session.session,
-		isAuthenticated: computed(() => !!session.session)
+		isAuthenticated: computed(() => !!session.session.value)
 	};
 };
 
 export const useUser = () => {
 	const { user, session } = injectDescope();
 
-	watch(session.session, () => {
-		if (user.isFetchUserWasNeverCalled.value && session.session.value) {
+	const fetchUser = () => {
+		if (!user.user.value && session.session.value) {
 			user.fetchUser();
 		}
-	});
+	};
+
+	fetchUser();
+
+	watch(session.session, fetchUser);
 
 	return {
 		isLoading: computed(

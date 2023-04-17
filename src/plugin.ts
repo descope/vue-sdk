@@ -1,6 +1,6 @@
 // src/plugins/auth.js
 
-import { App, Ref, computed, readonly, ref, unref } from 'vue';
+import { App, Ref, computed, readonly, ref, unref, watch } from 'vue';
 import createSdk from '@descope/web-js-sdk';
 import { DESCOPE_INJECTION_KEY, baseHeaders } from './constants';
 import { UserData, type Options } from './types';
@@ -50,6 +50,12 @@ export default {
 		const isFetchUserWasNeverCalled = computed(
 			() => isUserLoading.value === null
 		);
+
+		watch(sessionToken, () => {
+			if (!sessionToken.value) {
+				user.value = null;
+			}
+		});
 
 		// we need to share some logic between the plugin and the routeGuard
 		// maybe there is a better way to do it
