@@ -10,15 +10,18 @@ const router = createRouter({
 			path: '/',
 			name: 'home',
 			component: Home,
-			beforeEnter: async (to, from, next) => {
-				const isAuthenticated = await routeGuard();
-
-				if (!isAuthenticated) {
-					next({ name: 'login' });
-				} else {
-					next();
-				}
+			meta: {
+				requiresAuth: true
 			}
+			// beforeEnter: async (to, from, next) => {
+			//   // alternative method to guard route
+			// 	const isAuthenticated = await routeGuard();
+			// 	if (!isAuthenticated) {
+			// 		next({ name: 'login' });
+			// 	} else {
+			// 		next();
+			// 	}
+			// }
 			// beforeEnter: routeGuard
 		},
 		{
@@ -29,13 +32,13 @@ const router = createRouter({
 	]
 });
 
-// router.beforeEach((to, from, next) => {
-// 	// eslint-disable-next-line no-constant-condition
-// 	if (to.meta.requiresAuth && !isAuthenticated) {
-// 		next({ name: 'login' });
-// 	} else {
-// 		next();
-// 	}
-// });
+router.beforeEach(async (to, from, next) => {
+	const isAuthenticated = await routeGuard();
+	if (to.meta.requiresAuth && !isAuthenticated) {
+		next({ name: 'login' });
+	} else {
+		next();
+	}
+});
 
 export default router;
