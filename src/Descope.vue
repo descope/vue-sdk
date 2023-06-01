@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
 	<div>
 		<descope-wc
@@ -17,66 +18,57 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { defineProps, defineEmits, computed } from 'vue';
 import DescopeWc from '@descope/web-component';
 import { useOptions, useDescope } from './hooks';
 import { baseHeaders } from './constants';
 import { RequestConfig } from '@descope/core-js-sdk';
-import { SetupContext } from 'vue';
 
 DescopeWc.sdkConfigOverrides = { baseHeaders };
-
-export default {
-	// eslint-disable-next-line vue/multi-word-component-names
-	name: 'Descope',
-	props: {
-		flowId: {
-			type: String,
-			required: true
-		},
-		tenant: {
-			type: String
-		},
-		theme: {
-			type: String
-		},
-		debug: {
-			type: Boolean
-		},
-		telemetryKey: {
-			type: String
-		},
-		redirectUrl: {
-			type: String
-		},
-		autoFocus: {
-			type: Boolean
-		}
+const props = defineProps({
+	projectId: {
+		type: String
 	},
-	emits: ['success', 'error', 'page-updated'],
-	setup(_: unknown, { emit }: SetupContext) {
-		const { projectId, baseUrl, sessionTokenViaCookie } = useOptions();
-		const sdk = useDescope();
-
-		const onSuccess = async (e: CustomEvent) => {
-			await sdk.httpClient.hooks?.afterRequest?.(
-				{} as RequestConfig,
-				new Response(JSON.stringify(e.detail))
-			);
-
-			emit('success', e);
-		};
-		const onError = (e: Event) => emit('error', e);
-		const onPageUpdated = (e: Event) => emit('page-updated', e);
-
-		return {
-			projectId,
-			baseUrl,
-			sessionTokenViaCookie,
-			onSuccess,
-			onError,
-			onPageUpdated
-		};
+	baseUrl: {
+		type: String
+	},
+	flowId: {
+		type: String,
+		required: true
+	},
+	tenant: {
+		type: String
+	},
+	theme: {
+		type: String
+	},
+	debug: {
+		type: Boolean
+	},
+	telemetryKey: {
+		type: String
+	},
+	redirectUrl: {
+		type: String
+	},
+	autoFocus: {
+		type: Boolean
 	}
+});
+const emit = defineEmits(['success', 'error', 'page-updated']);
+const { httpClient } = useDescope();
+const { projectId: _projectId, baseUrl: _baseUrl } = useOptions();
+
+const onSuccess = async (e: CustomEvent) => {
+	await httpClient.hooks?.afterRequest?.(
+		{} as RequestConfig,
+		new Response(JSON.stringify(e.detail))
+	);
+	emit('success', e);
 };
+const onError = (e: Event) => emit('error', e);
+const onPageUpdated = (e: Event) => emit('page-updated', e);
+const projectId = computed(() => props.projectId || _projectId);
+const baseUrl = computed(() => props.baseUrl || _baseUrl);
 </script>
