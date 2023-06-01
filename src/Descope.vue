@@ -23,7 +23,9 @@ import { defineProps, defineEmits, computed } from 'vue';
 import DescopeWc from '@descope/web-component';
 import { useOptions, useDescope } from './hooks';
 import { baseHeaders } from './constants';
-import { RequestConfig } from '@descope/core-js-sdk';
+import type { RequestConfig } from '@descope/core-js-sdk';
+import type descopeSdk from '@descope/web-js-sdk';
+type SDK = ReturnType<typeof descopeSdk>;
 
 DescopeWc.sdkConfigOverrides = { baseHeaders };
 const props = defineProps({
@@ -57,11 +59,17 @@ const props = defineProps({
 	}
 });
 const emit = defineEmits(['success', 'error', 'page-updated']);
-const { httpClient } = useDescope();
-const { projectId: _projectId, baseUrl: _baseUrl } = useOptions();
+let _projectId: string;
+let _baseUrl: string;
+let httpClient: SDK['httpClient'];
+try {
+	({ projectId: _projectId, baseUrl: _baseUrl } = useOptions());
+	({ httpClient } = useDescope());
+	// eslint-disable-next-line no-empty
+} catch {}
 
 const onSuccess = async (e: CustomEvent) => {
-	await httpClient.hooks?.afterRequest?.(
+	await httpClient?.hooks?.afterRequest?.(
 		{} as RequestConfig,
 		new Response(JSON.stringify(e.detail))
 	);
