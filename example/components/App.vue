@@ -4,26 +4,16 @@
 			<router-link to="/">Home</router-link>
 			<router-link to="/login">Login</router-link>
 		</div>
-		<button v-if="isAuthenticated" @click="logout">Logout</button>
+		<button v-if="isAuthenticated" @click="logout()">Logout</button>
 	</header>
 	<router-view />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { useSession, useDescope } from '../../src';
 
-export default {
-	name: 'App',
-	setup() {
-		const session = useSession();
-		const sdk = useDescope();
-
-		return {
-			isAuthenticated: session.isAuthenticated,
-			logout: sdk.logout
-		};
-	}
-};
+const { isAuthenticated } = useSession();
+const { logout } = useDescope();
 </script>
 
 <style>

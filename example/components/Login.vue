@@ -3,7 +3,7 @@
 	<div class="wrapper">
 		<p v-if="isLoading">Loading...</p>
 		<div v-else-if="isAuthenticated">
-			<h1>You are already authenticated</h1>
+			<h1>You are authenticated</h1>
 		</div>
 		<Descope
 			v-else
@@ -16,27 +16,13 @@
 	</div>
 </template>
 
-<script>
+<script setup>
 import { Descope, useSession } from '../../src';
 
-export default {
-	components: {
-		Descope
-	},
-	setup() {
-		const handleEvent = (e) => {
-			console.log('Got new event', e);
-		};
-
-		const session = useSession();
-
-		return {
-			handleEvent,
-			isLoading: session.isLoading,
-			isAuthenticated: session.isAuthenticated
-		};
-	}
+const handleEvent = (e) => {
+	console.log('Got new event', e);
 };
+const { isLoading, isAuthenticated } = useSession();
 </script>
 
 <style>
