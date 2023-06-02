@@ -4,18 +4,24 @@ import { App, Ref, computed, readonly, ref, unref, watch } from 'vue';
 import createSdk from '@descope/web-js-sdk';
 import { DESCOPE_INJECTION_KEY, baseHeaders } from './constants';
 import { UserData, type Options } from './types';
+type SDK = ReturnType<typeof createSdk>;
 
 const routeGuardInternal = ref<(() => Promise<boolean>) | null>(null);
 export const routeGuard = () => unref(routeGuardInternal)?.();
 
 export default {
-	install: function (app: App, options: Options) {
-		const sdk = createSdk({
-			persistTokens: true,
-			autoRefresh: true,
-			baseHeaders,
-			...options
-		});
+	install: function (app: App, options?: Options, _sdk?: SDK) {
+		if (!options && !_sdk) {
+			throw Error('Options or sdk are required');
+		}
+		const sdk =
+			_sdk ??
+			createSdk({
+				persistTokens: true,
+				autoRefresh: true,
+				baseHeaders,
+				...options
+			});
 
 		const isSessionLoading = ref<boolean | null>(null);
 		const sessionToken = ref('');

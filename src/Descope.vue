@@ -24,8 +24,8 @@ import DescopeWc from '@descope/web-component';
 import { useOptions, useDescope } from './hooks';
 import { baseHeaders } from './constants';
 import type { RequestConfig } from '@descope/core-js-sdk';
-import type descopeSdk from '@descope/web-js-sdk';
-type SDK = ReturnType<typeof descopeSdk>;
+import type createSdk from '@descope/web-js-sdk';
+type SDK = ReturnType<typeof createSdk>;
 
 DescopeWc.sdkConfigOverrides = { baseHeaders };
 const props = defineProps({
