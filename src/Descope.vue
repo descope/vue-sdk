@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, computed } from 'vue';
+import { computed } from 'vue';
 import DescopeWc from '@descope/web-component';
 import { useOptions, useDescope } from './hooks';
 import { baseHeaders } from './constants';
