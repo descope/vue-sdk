@@ -92,9 +92,7 @@ const { logout } = useDescope();
 
 Note: `useSession` triggers a single request to the Descope backend to attempt to refresh the session. If you **don't** `useSession` on your app, the session will not be refreshed automatically. If your app does not require `useSession`, you can trigger the refresh manually by calling `refresh` from `useDescope` hook.
 
-
 **For more SDK usage examples refer to [docs](https://docs.descope.com/build/guides/client_sdks/)**
-
 
 #### Refresh token lifecycle
 
@@ -132,13 +130,11 @@ npm i && npm start
 
 See the following table for customization environment variables for the example app:
 
-| Env Variable            | Description                                                                                                   | Default value     |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Env Variable | Description | Default value |
+| ------------ | ----------- | ------------- |
 
-| VUE_APP_DESCOPE_FLOW_ID         | Which flow ID to use in the login page                                                                        | **sign-up-or-in** |
-| VUE_APP_DESCOPE_BASE_URL        | Custom Descope base URL                                                                                       | None              |
-
-
+| VUE_APP_DESCOPE_FLOW_ID | Which flow ID to use in the login page | **sign-up-or-in** |
+| VUE_APP_DESCOPE_BASE_URL | Custom Descope base URL | None |
 
 Example for `.env.local` file template:
 
