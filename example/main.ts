@@ -6,7 +6,8 @@ import descope from '../src';
 const app = createApp(App);
 app.use(router);
 app.use(descope, {
-	projectId: process.env.VUE_APP_PROJECT_ID || 'P2Nb7W8vCwFZ878Iy9r8bjEXYr8K',
+	projectId: process.env.VUE_APP_DESCOPE_PROJECT_ID || '',
+	baseUrl: process.env.VUE_APP_DESCOPE_BASE_URL || '',
 	sessionTokenViaCookie: true
 });
 app.mount('#app');

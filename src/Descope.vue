@@ -13,28 +13,18 @@
 			:auto-focus="autoFocus"
 			@success="onSuccess"
 			@error="onError"
-			@page-updated="onPageUpdated"
 		/>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import DescopeWc from '@descope/web-component';
 import { useOptions, useDescope } from './hooks';
 import { baseHeaders } from './constants';
 import type { RequestConfig } from '@descope/core-js-sdk';
-import type createSdk from '@descope/web-js-sdk';
-type SDK = ReturnType<typeof createSdk>;
 
 DescopeWc.sdkConfigOverrides = { baseHeaders };
-const props = defineProps({
-	projectId: {
-		type: String
-	},
-	baseUrl: {
-		type: String
-	},
+defineProps({
 	flowId: {
 		type: String,
 		required: true
@@ -58,25 +48,18 @@ const props = defineProps({
 		type: Boolean
 	}
 });
-const emit = defineEmits(['success', 'error', 'page-updated']);
-let _projectId: string;
-let _baseUrl: string;
-let httpClient: SDK['httpClient'];
-try {
-	({ projectId: _projectId, baseUrl: _baseUrl } = useOptions());
-	({ httpClient } = useDescope());
-	// eslint-disable-next-line no-empty
-} catch {}
+const emit = defineEmits(['success', 'error']);
+const { projectId, baseUrl } = useOptions();
+const { httpClient } = useDescope();
 
 const onSuccess = async (e: CustomEvent) => {
+	// Note: We need to emit AFTER the afterRequest hook has been called, but for
+	// an unknown reason, the emit is not called if we await the hook.
+	emit('success', e);
 	await httpClient?.hooks?.afterRequest?.(
 		{} as RequestConfig,
 		new Response(JSON.stringify(e.detail))
 	);
-	emit('success', e);
 };
 const onError = (e: Event) => emit('error', e);
-const onPageUpdated = (e: Event) => emit('page-updated', e);
-const projectId = computed(() => props.projectId || _projectId);
-const baseUrl = computed(() => props.baseUrl || _baseUrl);
 </script>

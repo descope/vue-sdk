@@ -1,7 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
 	<div class="wrapper">
-		<h2>Set Project ID with "VUE_APP_PROJECT_ID=foo" in .env.local</h2>
 		<p v-if="isLoading">Loading...</p>
 		<div v-else-if="isAuthenticated">
 			<h1>You are authenticated</h1>
@@ -10,19 +9,26 @@
 			v-else
 			flowId="sign-in"
 			theme="light"
-			@error="handleEvent"
-			@success="handleEvent"
-			@page-updated="handleEvent"
+			@error="handleError"
+			@success="handleSuccess"
 		/>
 	</div>
 </template>
 
 <script setup>
 import { Descope, useSession } from '../../src';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
-const handleEvent = (e) => {
+const handleError = (e) => {
 	console.log('Got new event', e);
 };
+
+const handleSuccess = (e) => {
+	console.log('Got new event', e);
+	router.push({ path: '/' });
+};
+
 const { isLoading, isAuthenticated } = useSession();
 </script>
 

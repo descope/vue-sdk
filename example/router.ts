@@ -13,15 +13,19 @@ const router = createRouter({
 			meta: {
 				requiresAuth: true
 			}
-			// beforeEnter: async (to, from, next) => {
-			//   // alternative method to guard route
-			// 	const isAuthenticated = await routeGuard();
-			// 	if (!isAuthenticated) {
-			// 		next({ name: 'login' });
-			// 	} else {
-			// 		next();
-			// 	}
-			// }
+			// Alternative method to guard route implemented in the beforeEach bellow:
+			/*
+			beforeEnter: async (to, from, next) => {
+			  // alternative method to guard route
+				const isAuthenticated = await routeGuard();
+				if (!isAuthenticated) {
+					next({ name: 'login' });
+				} else {
+					next();
+				}
+			}
+			*/
+			// alternative method to guard route implemented in the beforeEach bellow:
 			// beforeEnter: routeGuard
 		},
 		{

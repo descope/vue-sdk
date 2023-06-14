@@ -67,18 +67,4 @@ describe('Descope.vue', () => {
 			detail: 'test-error-payload'
 		});
 	});
-
-	it('emits a page-updated event when the DescopeWc component emits a page-updated event', async () => {
-		const wrapper = mount(Descope);
-		const descopeWc = wrapper.find('descope-wc');
-
-		await descopeWc.trigger('page-updated', {
-			detail: 'test-page-updated-payload'
-		});
-
-		expect(wrapper.emitted('page-updated')).toBeTruthy();
-		expect(wrapper.emitted('page-updated')?.[0]?.[0]).toMatchObject({
-			detail: 'test-page-updated-payload'
-		});
-	});
 });
