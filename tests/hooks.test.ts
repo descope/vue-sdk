@@ -17,9 +17,9 @@ describe('hooks', () => {
 		injectMock.mockReturnValue({
 			sdk: 'sdk',
 			options: 'options',
-			user: { user: 'user', isLoading: { value: true }, isFetchUserWasNeverCalled: {value: true } },
+			user: { user: 'user', isLoading: { value: true }, isFetchUserWasNeverCalled: { value: true }, fetchUser: () => { } },
 			session: {
-				session: 'session',
+				session: { value: 'session' },
 				isLoading: { value: true },
 				isFetchSessionWasNeverCalled: true
 			}
@@ -48,7 +48,7 @@ describe('hooks', () => {
 		it('should return the session', () => {
 			expect(useSession()).toEqual({
 				isLoading: true,
-				sessionToken: 'session',
+				sessionToken: { value: 'session' },
 				isAuthenticated: true
 			});
 		});
