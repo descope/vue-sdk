@@ -7,8 +7,7 @@
 		</div>
 		<Descope
 			v-else
-			flowId="sign-in"
-			theme="light"
+			:flowId="flowId"
 			@error="handleError"
 			@success="handleSuccess"
 		/>
@@ -21,15 +20,16 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const handleError = (e) => {
-	console.log('Got new event', e);
+	console.log('Got error', e);
 };
 
 const handleSuccess = (e) => {
-	console.log('Got new event', e);
+	console.log('Logged in', e);
 	router.push({ path: '/' });
 };
 
 const { isLoading, isAuthenticated } = useSession();
+const flowId = process.env.VUE_APP_DESCOPE_FLOW_ID || 'sign-up-or-in';
 </script>
 
 <style>
