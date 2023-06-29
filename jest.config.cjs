@@ -8,5 +8,6 @@ module.exports = {
 	collectCoverage: true,
 	coverageDirectory: 'coverage',
 	collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx,vue}'],
-	testMatch: ['**/tests/**/*.test.ts']
+	testMatch: ['**/tests/**/*.test.ts'],
+	setupFiles: ['./setupJest.js']
 };

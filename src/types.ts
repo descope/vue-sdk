@@ -7,7 +7,7 @@ export type Options = {
 	sessionTokenViaCookie?: boolean;
 };
 
-type Sdk = ReturnType<typeof createSdk>;
+export type Sdk = ReturnType<typeof createSdk>;
 
 export type UserData = Exclude<
 	Awaited<ReturnType<Sdk['me']>>['data'],

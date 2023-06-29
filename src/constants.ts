@@ -11,3 +11,5 @@ export const baseHeaders = {
 	'x-descope-sdk-name': 'vue',
 	'x-descope-sdk-version': BUILD_VERSION
 };
+
+export const IS_BROWSER = typeof window !== 'undefined';

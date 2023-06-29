@@ -1,21 +1,31 @@
 // src/plugins/auth.js
 
 import { App, Ref, computed, readonly, ref, unref } from 'vue';
-import createSdk from '@descope/web-js-sdk';
 import { DESCOPE_INJECTION_KEY, baseHeaders } from './constants';
-import { UserData, type Options } from './types';
+import { UserData, type Options, type Sdk } from './types';
+import createSdk from './sdk';
 
 const routeGuardInternal = ref<(() => Promise<boolean>) | null>(null);
 export const routeGuard = () => unref(routeGuardInternal)?.();
 
+let externalSdk: Sdk | undefined;
+/**
+ * This will return the Descope SDK instance
+ * In order to get the SDK instance, this should be called after using the plugin
+ * @returns Descope SDK
+ */
+export const getSdk = () => externalSdk;
+
 export default {
 	install: function (app: App, options: Options) {
 		const sdk = createSdk({
+			...options,
 			persistTokens: true,
 			autoRefresh: true,
-			baseHeaders,
-			...options
+			baseHeaders
 		});
+
+		externalSdk = sdk;
 
 		const isSessionLoading = ref<boolean | null>(null);
 		const sessionToken = ref('');
