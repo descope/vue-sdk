@@ -78,5 +78,8 @@
 		"typescript": "^4.9.3",
 		"vue": "^3.2.13",
 		"vue-router": "^4.1.6"
+	},
+	"overrides": {
+		"semver": "7.5.2"
 	}
 }
