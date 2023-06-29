@@ -14,12 +14,14 @@ export default [
 		output: [
 			{
 				file: packageJson.module,
-				format: 'esm'
+				format: 'esm',
+				sourcemap: true
 			},
 			{
 				file: packageJson.main,
 				format: 'cjs',
-				exports: 'named'
+				exports: 'named',
+				sourcemap: true
 			}
 		],
 		plugins: [
