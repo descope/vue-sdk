@@ -18,7 +18,8 @@ export default [
 			},
 			{
 				file: packageJson.main,
-				format: 'cjs'
+				format: 'cjs',
+				exports: 'named'
 			}
 		],
 		plugins: [

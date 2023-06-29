@@ -34,8 +34,10 @@
 		"@descope/web-component": "2.0.17"
 	},
 	"peerDependencies": {
-		"vue": ">=3",
-		"@descope/web-js-sdk": "1.2.8"
+		"vue": ">=3"
+	},
+	"optionalDependencies": {
+		"@descope/web-js-sdk": "1.0.11"
 	},
 	"devDependencies": {
 		"lint-staged": "^13.0.3",
