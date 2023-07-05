@@ -31,7 +31,7 @@
 		]
 	},
 	"dependencies": {
-		"@descope/web-component": "2.0.17"
+		"@descope/web-component": "2.6.0"
 	},
 	"peerDependencies": {
 		"vue": ">=3"
