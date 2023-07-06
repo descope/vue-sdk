@@ -12,6 +12,7 @@
 			:auto-focus="autoFocus"
 			@success="onSuccess"
 			@error="onError"
+			ref="webComponentRef"
 		/>
 	</div>
 </template>
@@ -50,6 +51,9 @@ export default {
 		},
 		autoFocus: {
 			type: Boolean
+		},
+		errorTransformer: {
+			type: Function
 		}
 	},
 	emits: ['success', 'error'],
@@ -75,6 +79,10 @@ export default {
 			onSuccess,
 			onError
 		};
+	},
+	mounted() {
+		// Set the errorTransformer function on the web component ref
+		this.$refs.webComponentRef.errorTransformer = this.errorTransformer;
 	}
 };
 </script>
