@@ -19,6 +19,9 @@ describe('Descope.vue', () => {
 	});
 
 	it('renders a DescopeWc component with the correct props', () => {
+		const errorTransformer = (error: { text: string; type: string }) => {
+			return error.text || error.type;
+		};
 		const wrapper = mount(Descope, {
 			props: {
 				flowId: 'test-flow-id',
@@ -27,7 +30,8 @@ describe('Descope.vue', () => {
 				debug: true,
 				telemetryKey: 'test-telemetry-key',
 				redirectUrl: 'test-redirect-url',
-				autoFocus: true
+				autoFocus: true,
+				errorTransformer
 			}
 		});
 
@@ -42,6 +46,9 @@ describe('Descope.vue', () => {
 		expect(descopeWc.attributes('telemetrykey')).toBe('test-telemetry-key');
 		expect(descopeWc.attributes('redirect-url')).toBe('test-redirect-url');
 		expect(descopeWc.attributes('auto-focus')).toBe('true');
+		expect(wrapper.vm.$refs.webComponentRef.errorTransformer).toBe(
+			errorTransformer
+		);
 	});
 
 	it('emits a success event when the DescopeWc component emits a success event', async () => {
