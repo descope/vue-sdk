@@ -11,6 +11,7 @@
 			:telemetryKey.attr="telemetryKey"
 			:redirect-url="redirectUrl"
 			:auto-focus="autoFocus"
+			:errorTransformer.prop="errorTransformer"
 			@success="onSuccess"
 			@error="onError"
 		/>
@@ -24,6 +25,7 @@ import { baseHeaders } from './constants';
 import { RequestConfig } from '@descope/core-js-sdk';
 
 DescopeWcClass.sdkConfigOverrides = { baseHeaders };
+
 defineProps({
 	flowId: {
 		type: String,
@@ -46,10 +48,13 @@ defineProps({
 	},
 	autoFocus: {
 		type: Boolean
+	},
+	errorTransformer: {
+		type: Function
 	}
 });
 const emit = defineEmits(['success', 'error']);
-const { projectId, baseUrl } = useOptions();
+const { projectId, baseUrl, sessionTokenViaCookie } = useOptions();
 const sdk = useDescope();
 
 const onSuccess = async (e: CustomEvent) => {
@@ -61,5 +66,6 @@ const onSuccess = async (e: CustomEvent) => {
 		new Response(JSON.stringify(e.detail))
 	);
 };
+
 const onError = (e: Event) => emit('error', e);
 </script>

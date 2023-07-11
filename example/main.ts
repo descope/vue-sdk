@@ -7,7 +7,8 @@ const app = createApp(App);
 app.use(router);
 
 app.use(descope, {
-	projectId: process.env.VUE_APP_DESCOPE_PROJECT_ID || '',
+	projectId:
+		process.env.VUE_APP_DESCOPE_PROJECT_ID || 'P2KFKhheHR9aICDa9kYkrGsYNnk3',
 	baseUrl: process.env.VUE_APP_DESCOPE_BASE_URL || '',
 	sessionTokenViaCookie: true
 });

@@ -10,6 +10,7 @@
 			:flowId="flowId"
 			@error="handleError"
 			@success="handleSuccess"
+			:errorTransformer="errorTransformer"
 		/>
 	</div>
 </template>
@@ -26,6 +27,13 @@ const handleError = (e) => {
 const handleSuccess = (e) => {
 	console.log('Logged in', e);
 	router.push({ path: '/' });
+};
+
+const errorTransformer = (error) => {
+	const translationMap = {
+		SAMLStartFailed: 'Failed to start SAML flow!!'
+	};
+	return translationMap[error.type] || error.text;
 };
 
 const { isLoading, isAuthenticated } = useSession();

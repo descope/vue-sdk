@@ -38,25 +38,42 @@ app.mount('#app');
 
 ### Use Descope to render specific flow
 
-```js
+```vue
 <template>
 	<Descope
-		flowId="sign-up-or-in"
+		:flowId.prop="'my-flow-id'"
 		@error="handleError"
 		@success="handleSuccess"
 	/>
+	<!-- additional props -->
+	<!-- :theme.prop="'dark'" theme can be "light", "dark" or "os", which auto select a theme based on the OS theme. Default is "light" -->
+	<!-- :debug.prop="true" debug can be set to true to enable debug mode -->
+	<!-- :tenant.prop="tenantId" tenant ID for SSO (SAML) login. If not provided, Descope will use the domain of available email to choose the tenant -->
+	<!-- :redirectUrl.prop="redirectUrl" Redirect URL for OAuth and SSO (will be used when redirecting back from the OAuth provider / IdP), or for "Magic Link" and "Enchanted Link" (will be used as a link in the message sent to the the user) -->
+	<!-- :autoFocus.prop="'skipFirstScreen'" autoFocus can be true, false or "skipFirstScreen". Default is true. - true: automatically focus on the first input of each screen - false: do not automatically focus on screen's inputs - "skipFirstScreen": automatically focus on the first input of each screen, except first screen -->
+	<!-- :errorTransformer.prop="errorTransformer" errorTransformer is a function that receives an error object and returns a string. The returned string will be displayed to the user. NOTE: errorTransformer is not required. If not provided, the error object will be displayed as is. -->
 </template>
 
 <script setup>
 import { Descope } from '@descope/vue-sdk';
 
 const handleError = (e) => {
-	console.log('Got error', e);
+	console.log('Could not log in', e);
 };
 
 const handleSuccess = (e) => {
-	console.log('Logged in', e);
+	console.log('Logged in!', e);
 };
+
+// let tenantId = '<tenantId>'; // replace with your tenant ID
+// let redirectUrl = '<redirectUrl>'; // replace with your redirect URL
+
+// const errorTransformer = (error) => {
+//   const translationMap = {
+//     SAMLStartFailed: 'Failed to start SAML flow'
+//   };
+//   return translationMap[error.type] || error.text;
+// };
 </script>
 ```
 
