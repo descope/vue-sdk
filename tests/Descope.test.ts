@@ -46,9 +46,7 @@ describe('Descope.vue', () => {
 		expect(descopeWc.attributes('telemetrykey')).toBe('test-telemetry-key');
 		expect(descopeWc.attributes('redirect-url')).toBe('test-redirect-url');
 		expect(descopeWc.attributes('auto-focus')).toBe('true');
-		expect(wrapper.vm.$refs.webComponentRef.errorTransformer).toBe(
-			errorTransformer
-		);
+		expect(wrapper.vm.errorTransformer).toBe(errorTransformer);
 	});
 
 	it('emits a success event when the DescopeWc component emits a success event', async () => {
