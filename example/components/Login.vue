@@ -31,7 +31,7 @@ const handleSuccess = (e) => {
 
 const errorTransformer = (error) => {
 	const translationMap = {
-		SAMLStartFailed: 'Failed to start SAML flow!!'
+		SAMLStartFailed: 'Failed to start SAML flow'
 	};
 	return translationMap[error.type] || error.text;
 };

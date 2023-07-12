@@ -54,7 +54,7 @@ defineProps({
 	}
 });
 const emit = defineEmits(['success', 'error']);
-const { projectId, baseUrl, sessionTokenViaCookie } = useOptions();
+const { projectId, baseUrl } = useOptions();
 const sdk = useDescope();
 
 const onSuccess = async (e: CustomEvent) => {
