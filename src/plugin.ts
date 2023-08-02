@@ -70,14 +70,11 @@ export default {
 				}
 
 				// if the session is loading we want to wait for it to finish before resolving
-				if (isSessionLoading.value) {
-					watch(
-						() => isSessionLoading.value,
-						() => !isSessionLoading.value && resolve(!!unref(sessionToken))
-					);
-				} else {
-					resolve(!!unref(sessionToken));
-				}
+				watch(
+					() => isSessionLoading.value,
+					() => !isSessionLoading.value && resolve(!!unref(sessionToken)),
+					{ immediate: true }
+				);
 			});
 
 		app.provide(DESCOPE_INJECTION_KEY, {
