@@ -6,7 +6,6 @@
 			<h1>You are authenticated</h1>
 		</div>
 		<Descope
-			v-else
 			:flowId="flowId"
 			@error="handleError"
 			@success="handleSuccess"

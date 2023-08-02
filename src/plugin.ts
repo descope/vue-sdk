@@ -1,6 +1,6 @@
 // src/plugins/auth.js
 
-import { App, Ref, computed, readonly, ref, unref } from 'vue';
+import { App, Ref, computed, readonly, ref, unref, watch } from 'vue';
 import { DESCOPE_INJECTION_KEY, baseHeaders } from './constants';
 import { UserData, type Options, type Sdk } from './types';
 import createSdk from './sdk';
@@ -63,12 +63,22 @@ export default {
 
 		// we need to share some logic between the plugin and the routeGuard
 		// maybe there is a better way to do it
-		routeGuardInternal.value = async () => {
-			if (!sessionToken.value && isFetchSessionWasNeverCalled.value) {
-				await fetchSession();
-			}
-			return !!unref(sessionToken);
-		};
+		routeGuardInternal.value = () =>
+			new Promise((resolve, reject) => {
+				if (!sessionToken.value && isFetchSessionWasNeverCalled.value) {
+					fetchSession().catch(reject);
+				}
+
+				// if the session is loading we want to wait for it to finish before resolving
+				if (isSessionLoading.value) {
+					watch(
+						() => isSessionLoading.value,
+						() => !isSessionLoading.value && resolve(!!unref(sessionToken))
+					);
+				} else {
+					resolve(!!unref(sessionToken));
+				}
+			});
 
 		app.provide(DESCOPE_INJECTION_KEY, {
 			session: {
