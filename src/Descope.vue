@@ -58,13 +58,11 @@ const { projectId, baseUrl } = useOptions();
 const sdk = useDescope();
 
 const onSuccess = async (e: CustomEvent) => {
-	// Note: We need to emit AFTER the afterRequest hook has been called, but for
-	// an unknown reason, the emit is not called if we await the hook.
-	emit('success', e);
 	await sdk.httpClient.hooks?.afterRequest?.(
 		{} as RequestConfig,
 		new Response(JSON.stringify(e.detail))
 	);
+	emit('success', e);
 };
 
 const onError = (e: Event) => emit('error', e);

@@ -88,9 +88,6 @@ describe('plugin', () => {
 
 		plugin.install(app, {} as any);
 
-		// const onUserChange = mockSdk.onUserChange.mock.calls[0][0];
-		// onUserChange('newUser');
-
 		const { user } = provide.mock.calls[0][1];
 		expect(user.isFetchUserWasNeverCalled.value).toBe(true);
 	});
@@ -146,6 +143,31 @@ describe('plugin', () => {
 			onSessionTokenChange('');
 
 			expect(await routeGuard()).toBe(false);
+		});
+
+		it('should resolve only when the session is not loading', async () => {
+			const provide = jest.fn();
+			const app = { provide } as any;
+
+			let resolve;
+
+			mockSdk.refresh.mockReturnValueOnce(
+				new Promise((res) => {
+					resolve = res;
+				})
+			);
+
+			plugin.install(app, {} as any);
+			routeGuard();
+			const isAuthenticatedPromise = routeGuard();
+
+			const onSessionTokenChange =
+				mockSdk.onSessionTokenChange.mock.calls[0][0];
+			onSessionTokenChange('session');
+
+			resolve();
+
+			expect(await isAuthenticatedPromise).toBe(true);
 		});
 	});
 });
