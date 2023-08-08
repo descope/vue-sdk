@@ -6,6 +6,7 @@
 			:base-url="baseUrl"
 			:flow-id="flowId"
 			:theme.attr="theme"
+			:locale.attr="locale"
 			:tenant.attr="tenant"
 			:debug.attr="debug"
 			:telemetryKey.attr="telemetryKey"
@@ -35,6 +36,9 @@ defineProps({
 		type: String
 	},
 	theme: {
+		type: String
+	},
+	locale: {
 		type: String
 	},
 	debug: {

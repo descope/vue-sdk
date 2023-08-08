@@ -27,6 +27,7 @@ describe('Descope.vue', () => {
 				flowId: 'test-flow-id',
 				tenant: 'test-tenant',
 				theme: 'test-theme',
+				locale: 'test-locale',
 				debug: true,
 				telemetryKey: 'test-telemetry-key',
 				redirectUrl: 'test-redirect-url',
@@ -41,6 +42,7 @@ describe('Descope.vue', () => {
 		expect(descopeWc.attributes('base-url')).toBe('baseUrl');
 		expect(descopeWc.attributes('flow-id')).toBe('test-flow-id');
 		expect(descopeWc.attributes('theme')).toBe('test-theme');
+		expect(descopeWc.attributes('locale')).toBe('test-locale');
 		expect(descopeWc.attributes('tenant')).toBe('test-tenant');
 		expect(descopeWc.attributes('debug')).toBe('true');
 		expect(descopeWc.attributes('telemetrykey')).toBe('test-telemetry-key');
