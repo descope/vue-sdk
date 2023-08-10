@@ -40,11 +40,7 @@ app.mount('#app');
 
 ```vue
 <template>
-	<Descope
-		flowId="'my-flow-id'"
-		@error="handleError"
-		@success="handleSuccess"
-	/>
+	<Descope flowId="my-flow-id" @error="handleError" @success="handleSuccess" />
 	<!-- additional props -->
 	<!-- theme="dark" theme can be "light", "dark" or "os", which auto select a theme based on the OS theme. Default is "light" -->
 	<!-- v-bind:debug="true" debug can be set to true to enable debug mode -->
