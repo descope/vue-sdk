@@ -6,7 +6,8 @@
 			<h1>You are authenticated</h1>
 		</div>
 		<Descope
-			:flowId="flowId"
+			flowId="sign-up-or-in"
+			v-bind:debug="true"
 			@error="handleError"
 			@success="handleSuccess"
 			:errorTransformer="errorTransformer"
