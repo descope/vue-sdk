@@ -40,20 +40,15 @@ app.mount('#app');
 
 ```vue
 <template>
-	<Descope
-		:flowId.prop="'my-flow-id'"
-		@error="handleError"
-		@success="handleSuccess"
-	/>
+	<Descope flowId="my-flow-id" @error="handleError" @success="handleSuccess" />
 	<!-- additional props -->
-	<!-- :theme.prop="'dark'" theme can be "light", "dark" or "os", which auto select a theme based on the OS theme. Default is "light" -->
-	<!-- :debug.prop="true" debug can be set to true to enable debug mode -->
-	<!-- :locale.prop="'en'" locale can be any supported locale which the flow's screen translated to, if not provided, the locale is taken from the browser's locale. -->
-	<!-- :debug.prop="true" debug can be set to true to enable debug mode -->
-	<!-- :tenant.prop="tenantId" tenant ID for SSO (SAML) login. If not provided, Descope will use the domain of available email to choose the tenant -->
-	<!-- :redirectUrl.prop="redirectUrl" Redirect URL for OAuth and SSO (will be used when redirecting back from the OAuth provider / IdP), or for "Magic Link" and "Enchanted Link" (will be used as a link in the message sent to the the user) -->
-	<!-- :autoFocus.prop="'skipFirstScreen'" autoFocus can be true, false or "skipFirstScreen". Default is true. - true: automatically focus on the first input of each screen - false: do not automatically focus on screen's inputs - "skipFirstScreen": automatically focus on the first input of each screen, except first screen -->
-	<!-- :errorTransformer.prop="errorTransformer" errorTransformer is a function that receives an error object and returns a string. The returned string will be displayed to the user. NOTE: errorTransformer is not required. If not provided, the error object will be displayed as is. -->
+	<!-- theme="dark" theme can be "light", "dark" or "os", which auto select a theme based on the OS theme. Default is "light" -->
+	<!-- v-bind:debug="true" debug can be set to true to enable debug mode -->
+	<!-- locale="en" locale can be any supported locale which the flow's screen translated to, if not provided, the locale is taken from the browser's locale. -->
+	<!-- tenant="tenantId" tenant ID for SSO (SAML) login. If not provided, Descope will use the domain of available email to choose the tenant -->
+	<!-- redirectUrl="redirectUrl" Redirect URL for OAuth and SSO (will be used when redirecting back from the OAuth provider / IdP), or for "Magic Link" and "Enchanted Link" (will be used as a link in the message sent to the the user) -->
+	<!-- autoFocus="skipFirstScreen" autoFocus can be true, false or "skipFirstScreen". Default is true. - true: automatically focus on the first input of each screen - false: do not automatically focus on screen's inputs - "skipFirstScreen": automatically focus on the first input of each screen, except first screen -->
+	<!-- :errorTransformer="errorTransformer" errorTransformer is a function that receives an error object and returns a string. The returned string will be displayed to the user. NOTE: errorTransformer is not required. If not provided, the error object will be displayed as is. -->
 </template>
 
 <script setup>
