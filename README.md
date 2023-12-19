@@ -49,6 +49,8 @@ app.mount('#app');
 	<!-- redirectUrl="redirectUrl" Redirect URL for OAuth and SSO (will be used when redirecting back from the OAuth provider / IdP), or for "Magic Link" and "Enchanted Link" (will be used as a link in the message sent to the the user) -->
 	<!-- autoFocus="skipFirstScreen" autoFocus can be true, false or "skipFirstScreen". Default is true. - true: automatically focus on the first input of each screen - false: do not automatically focus on screen's inputs - "skipFirstScreen": automatically focus on the first input of each screen, except first screen -->
 	<!-- :errorTransformer="errorTransformer" errorTransformer is a function that receives an error object and returns a string. The returned string will be displayed to the user. NOTE: errorTransformer is not required. If not provided, the error object will be displayed as is. -->
+	<!-- :form="form" form is an object the initial form context that is used in screens inputs in the flow execution. Used to inject predifined input values on flow start such as custom inputs, custom attrbiutes and other inputs. NOTE: form is not required. If not provided, 'form' context key will be empty before user input. -->
+	<!-- :client="client" client is an object the initial client context in the flow execution. NOTE: client is not required. If not provided, context key will be empty. -->
 </template>
 
 <script setup>

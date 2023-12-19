@@ -10,6 +10,7 @@
 			@error="handleError"
 			@success="handleSuccess"
 			:errorTransformer="errorTransformer"
+			:form="form"
 		/>
 	</div>
 </template>
@@ -37,6 +38,7 @@ const errorTransformer = (error) => {
 
 const { isLoading, isAuthenticated } = useSession();
 const flowId = process.env.VUE_APP_DESCOPE_FLOW_ID || 'sign-up-or-in';
+const form = { email: 'myemail@domain.com' };
 </script>
 
 <style>
