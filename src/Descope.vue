@@ -70,8 +70,10 @@ const emit = defineEmits(['success', 'error']);
 const { projectId, baseUrl } = useOptions();
 const sdk = useDescope();
 
-const formStr = computed(() => JSON.stringify(props.form));
-const clientStr = computed(() => JSON.stringify(props.client));
+const formStr = computed(() => (props.form ? JSON.stringify(props.form) : ''));
+const clientStr = computed(() =>
+	props.client ? JSON.stringify(props.client) : ''
+);
 const onSuccess = async (e: CustomEvent) => {
 	await sdk.httpClient.hooks?.afterRequest?.(
 		{} as RequestConfig,

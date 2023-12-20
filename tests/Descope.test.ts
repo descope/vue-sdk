@@ -55,6 +55,19 @@ describe('Descope.vue', () => {
 		expect(wrapper.vm.client).toStrictEqual({ test: 'b' });
 	});
 
+	it('renders a DescopeWc component with empty props', () => {
+		const wrapper = mount(Descope, {
+			props: {
+				form: null,
+				client: null
+			}
+		});
+
+		const descopeWc = wrapper.find('descope-wc');
+		expect(descopeWc.attributes('form')).toBe('');
+		expect(wrapper.vm.client).toBeNull();
+	});
+
 	it('emits a success event when the DescopeWc component emits a success event', async () => {
 		const wrapper = mount(Descope);
 		const descopeWc = wrapper.find('descope-wc');
