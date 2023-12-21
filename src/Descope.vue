@@ -13,8 +13,8 @@
 			:redirect-url="redirectUrl"
 			:auto-focus="autoFocus"
 			:errorTransformer.prop="errorTransformer"
-			:form="formStr"
-			:client="clientStr"
+			:form.attr="formStr"
+			:client.attr="clientStr"
 			@success="onSuccess"
 			@error="onError"
 		/>
