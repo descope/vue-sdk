@@ -32,7 +32,9 @@ describe('Descope.vue', () => {
 				telemetryKey: 'test-telemetry-key',
 				redirectUrl: 'test-redirect-url',
 				autoFocus: true,
-				errorTransformer
+				errorTransformer,
+				form: { test: 'a' },
+				client: { test: 'b' }
 			}
 		});
 
@@ -49,6 +51,21 @@ describe('Descope.vue', () => {
 		expect(descopeWc.attributes('redirect-url')).toBe('test-redirect-url');
 		expect(descopeWc.attributes('auto-focus')).toBe('true');
 		expect(wrapper.vm.errorTransformer).toBe(errorTransformer);
+		expect(descopeWc.attributes('form')).toBe('{"test":"a"}');
+		expect(wrapper.vm.client).toStrictEqual({ test: 'b' });
+	});
+
+	it('renders a DescopeWc component with empty props', () => {
+		const wrapper = mount(Descope, {
+			props: {
+				form: null,
+				client: null
+			}
+		});
+
+		const descopeWc = wrapper.find('descope-wc');
+		expect(descopeWc.attributes('form')).toBe('');
+		expect(wrapper.vm.client).toBeNull();
 	});
 
 	it('emits a success event when the DescopeWc component emits a success event', async () => {
