@@ -97,7 +97,7 @@ This can be helpful to implement application-specific logic. Examples:
 </template>
 
 <script setup>
-import { useDescope, useSession, useUser } from '../../src';
+import { useDescope, useSession, useUser } from '@descope/vue-sdk';
 
 const { isAuthenticated, isSessionLoading } = useSession();
 const { user, isUserLoading } = useUser();
@@ -252,6 +252,25 @@ VUE_APP_DESCOPE_PROJECT_ID="<Project-ID>"
 VUE_APP_DESCOPE_FLOW_ID=""
 # Descope base URL
 VUE_APP_DESCOPE_BASE_URL=""
+```
+
+## Q & A
+
+### I updated the user in my backend, but the user / session token are not updated in the frontend
+
+// adjust the answer to vue sdk
+The Descope SDK caches the user and session token in the frontend. If you update the user in your backend (using Descope Management SDK/API for example), you can call `me` / `refresh` from `useDescope` hook to refresh the user and session token. Example:
+
+```js
+const sdk = useDescope();
+
+const handleUpdateUser = () => {
+	myBackendUpdateUser().then(() => {
+		sdk.me();
+		// or
+		sdk.refresh();
+	});
+};
 ```
 
 ## Learn More
