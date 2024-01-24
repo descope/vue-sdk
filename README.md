@@ -48,7 +48,9 @@ app.mount('#app');
 	<!-- tenant="tenantId" tenant ID for SSO (SAML) login. If not provided, Descope will use the domain of available email to choose the tenant -->
 	<!-- redirectUrl="redirectUrl" Redirect URL for OAuth and SSO (will be used when redirecting back from the OAuth provider / IdP), or for "Magic Link" and "Enchanted Link" (will be used as a link in the message sent to the the user) -->
 	<!-- autoFocus="skipFirstScreen" autoFocus can be true, false or "skipFirstScreen". Default is true. - true: automatically focus on the first input of each screen - false: do not automatically focus on screen's inputs - "skipFirstScreen": automatically focus on the first input of each screen, except first screen -->
-	<!-- :errorTransformer="errorTransformer" errorTransformer is a function that receives an error object and returns a string. The returned string will be displayed to the user. NOTE: errorTransformer is not required. If not provided, the error object will be displayed as is. -->
+	<!-- errorTransformer="errorTransformer" errorTransformer is a function that receives an error object and returns a string. The returned string will be displayed to the user. NOTE: errorTransformer is not required. If not provided, the error object will be displayed as is. -->
+	<!-- form="{ email: 'test@domain.com' }" form is an object the initial form context that is used in screens inputs in the flow execution. Used to inject predifined input values on flow start such as custom inputs, custom attrbiutes and other inputs. Keys passed can be accessed in flows actions, conditions and screens prefixed with "form.". NOTE: form is not required. If not provided, 'form' context key will be empty before user input. -->
+	<!-- client="{ version: '1.2.3' }" client is an object the initial client context in the flow execution. Keys passed can be accessed in flows actions and conditions prefixed with "client.". NOTE: client is not required. If not provided, context key will be empty. -->
 </template>
 
 <script setup>
@@ -95,7 +97,7 @@ This can be helpful to implement application-specific logic. Examples:
 </template>
 
 <script setup>
-import { useDescope, useSession, useUser } from '../../src';
+import { useDescope, useSession, useUser } from '@descope/vue-sdk';
 
 const { isAuthenticated, isSessionLoading } = useSession();
 const { user, isUserLoading } = useUser();
@@ -250,6 +252,25 @@ VUE_APP_DESCOPE_PROJECT_ID="<Project-ID>"
 VUE_APP_DESCOPE_FLOW_ID=""
 # Descope base URL
 VUE_APP_DESCOPE_BASE_URL=""
+```
+
+## Q & A
+
+### I updated the user in my backend, but the user / session token are not updated in the frontend
+
+// adjust the answer to vue sdk
+The Descope SDK caches the user and session token in the frontend. If you update the user in your backend (using Descope Management SDK/API for example), you can call `me` / `refresh` from `useDescope` hook to refresh the user and session token. Example:
+
+```js
+const sdk = useDescope();
+
+const handleUpdateUser = () => {
+	myBackendUpdateUser().then(() => {
+		sdk.me();
+		// or
+		sdk.refresh();
+	});
+};
 ```
 
 ## Learn More

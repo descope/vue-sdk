@@ -1,6 +1,6 @@
 {
 	"name": "@descope/vue-sdk",
-	"version": "2.0.0",
+	"version": "2.0.2",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"type": "module",
@@ -37,7 +37,7 @@
 		]
 	},
 	"dependencies": {
-		"@descope/web-component": "3.0.0"
+		"@descope/web-component": "3.4.0"
 	},
 	"peerDependencies": {
 		"vue": ">=3"
