@@ -13,6 +13,8 @@
 			:redirect-url="redirectUrl"
 			:auto-focus="autoFocus"
 			:errorTransformer.prop="errorTransformer"
+			:form.attr="formStr"
+			:client.attr="clientStr"
 			@success="onSuccess"
 			@error="onError"
 		/>
@@ -24,10 +26,11 @@ import DescopeWcClass from '@descope/web-component';
 import { useOptions, useDescope } from './hooks';
 import { baseHeaders } from './constants';
 import { RequestConfig } from '@descope/core-js-sdk';
+import { computed } from 'vue';
 
 DescopeWcClass.sdkConfigOverrides = { baseHeaders };
 
-defineProps({
+const props = defineProps({
 	flowId: {
 		type: String,
 		required: true
@@ -55,12 +58,22 @@ defineProps({
 	},
 	errorTransformer: {
 		type: Function
+	},
+	form: {
+		type: Object
+	},
+	client: {
+		type: Object
 	}
 });
 const emit = defineEmits(['success', 'error']);
 const { projectId, baseUrl } = useOptions();
 const sdk = useDescope();
 
+const formStr = computed(() => (props.form ? JSON.stringify(props.form) : ''));
+const clientStr = computed(() =>
+	props.client ? JSON.stringify(props.client) : ''
+);
 const onSuccess = async (e: CustomEvent) => {
 	await sdk.httpClient.hooks?.afterRequest?.(
 		{} as RequestConfig,
