@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '@vue/test-utils';
-import { Descope } from '../src';
+import Descope from '../src/Descope.vue';
 
 jest.mock('../src/hooks', () => ({
 	useOptions: () => ({ projectId: 'project1', baseUrl: 'baseUrl' }),
