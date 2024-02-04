@@ -9,7 +9,7 @@
 <script setup>
 import { UserManagement } from '../../src';
 
-const tenant = process.env.VUE_APP_DESCOPE_TENANT || 'sign-up-or-in';
+const tenant = process.env.VUE_APP_DESCOPE_TENANT;
 </script>
 
 <style>
