@@ -1,6 +1,5 @@
 import { inject } from 'vue';
-import { useDescope, useSession, useUser } from '../src';
-import { useOptions } from '../src/hooks';
+import { useOptions, useDescope, useSession, useUser } from '../src/hooks';
 
 jest.mock('vue', () => ({
 	...jest.requireActual('vue'),

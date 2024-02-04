@@ -1,4 +1,4 @@
-import plugin, { routeGuard } from '../src';
+import plugin, { routeGuard } from '../src/plugin';
 import createSdk from '@descope/web-js-sdk';
 jest.mock('@descope/web-js-sdk');
 

@@ -2,6 +2,7 @@
 	<header>
 		<div class="routes">
 			<router-link to="/">Home</router-link>
+			<router-link to="/manage-users">Manage Users</router-link>
 			<router-link to="/login">Login</router-link>
 		</div>
 		<button v-if="isAuthenticated" @click="logout()">Logout</button>
@@ -21,7 +22,6 @@ const { logout } = useDescope();
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
 	color: #2c3e50;
 }
 
