@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './components/Home.vue';
 import Login from './components/Login.vue';
+import ManageUsers from './components/ManageUsers.vue';
 import { routeGuard } from '../src';
 
 const router = createRouter({
@@ -32,6 +33,11 @@ const router = createRouter({
 			path: '/login',
 			name: 'login',
 			component: Login
+		},
+		{
+			path: '/manage-users',
+			name: 'manage-users',
+			component: ManageUsers
 		}
 	]
 });
