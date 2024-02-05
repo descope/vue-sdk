@@ -1,5 +1,6 @@
 import { shallowMount, mount } from '@vue/test-utils';
 import { Descope } from '../src';
+import { default as DescopeWC } from '@descope/web-component';
 
 jest.mock('../src/hooks', () => ({
 	useOptions: () => ({ projectId: 'project1', baseUrl: 'baseUrl' }),
@@ -66,6 +67,23 @@ describe('Descope.vue', () => {
 		const descopeWc = wrapper.find('descope-wc');
 		expect(descopeWc.attributes('form')).toBe('');
 		expect(wrapper.vm.client).toBeNull();
+	});
+
+	it('init sdk config', async () => {
+		const wrapper = mount(Descope);
+		const descopeWc = wrapper.find('descope-wc');
+		expect(descopeWc).toBeTruthy();
+
+		expect(DescopeWC.sdkConfigOverrides).toEqual({
+			baseHeaders: {
+				'x-descope-sdk-name': 'vue',
+				'x-descope-sdk-version': '123'
+			},
+			persistTokens: false,
+			hooks: {
+				beforeRequest: expect.any(Function)
+			}
+		});
 	});
 
 	it('emits a success event when the DescopeWc component emits a success event', async () => {
