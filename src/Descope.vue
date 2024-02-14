@@ -17,6 +17,7 @@
 			:client.attr="clientStr"
 			@success="onSuccess"
 			@error="onError"
+			@ready="onReady"
 		/>
 	</div>
 </template>
@@ -86,7 +87,7 @@ const props = defineProps({
 		type: Object
 	}
 });
-const emit = defineEmits(['success', 'error']);
+const emit = defineEmits(['success', 'error', 'ready']);
 const { projectId, baseUrl } = useOptions();
 const sdk = useDescope();
 
@@ -103,4 +104,6 @@ const onSuccess = async (e: CustomEvent) => {
 };
 
 const onError = (e: Event) => emit('error', e);
+
+const onReady = (e: Event) => emit('ready', e);
 </script>

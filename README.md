@@ -40,7 +40,13 @@ app.mount('#app');
 
 ```vue
 <template>
-	<Descope flowId="my-flow-id" @error="handleError" @success="handleSuccess" />
+	<p v-if="isFlowLoading">Loading...</p>
+	<Descope
+		flowId="my-flow-id"
+		@success="handleSuccess"
+		@error="handleError"
+		@ready="handleReady"
+	/>
 	<!-- additional props -->
 	<!-- theme="dark" theme can be "light", "dark" or "os", which auto select a theme based on the OS theme. Default is "light" -->
 	<!-- v-bind:debug="true" debug can be set to true to enable debug mode -->
@@ -55,13 +61,20 @@ app.mount('#app');
 
 <script setup>
 import { Descope } from '@descope/vue-sdk';
+import { ref } from 'vue';
+
+const isFlowLoading = ref(true);
+
+const handleSuccess = (e) => {
+	console.log('Logged in!', e);
+};
 
 const handleError = (e) => {
 	console.log('Could not log in', e);
 };
 
-const handleSuccess = (e) => {
-	console.log('Logged in!', e);
+const handleReady = () => {
+	isFlowLoading.value = false;
 };
 
 // let tenantId = '<tenantId>'; // replace with your tenant ID
@@ -215,7 +228,7 @@ You can find an example Vue app in the [example folder](./example).
 
 ### Setup
 
-To run the examples, set your `Project ID` by setting the `DESCOPE_PROJECT_ID` env var or directly
+To run the examples, set your `Project ID` by setting the `VUE_APP_DESCOPE_PROJECT_ID` env var or directly
 in the sample code.
 Find your Project ID in the [Descope console](https://app.descope.com/settings/project).
 
