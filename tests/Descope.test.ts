@@ -109,4 +109,13 @@ describe('Descope.vue', () => {
 			detail: 'test-error-payload'
 		});
 	});
+
+	it('emits an ready event when the DescopeWc component emits an ready event', async () => {
+		const wrapper = mount(Descope);
+		const descopeWc = wrapper.find('descope-wc');
+
+		await descopeWc.trigger('ready', {});
+
+		expect(wrapper.emitted('ready')).toBeTruthy();
+	});
 });

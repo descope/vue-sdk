@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-	<div class="wrapper">
+	<div class="manage-users-wrapper">
 		<h1>Manage Users</h1>
 		<UserManagement :tenant="tenant" />
 	</div>
@@ -13,7 +13,7 @@ const tenant = process.env.VUE_APP_DESCOPE_TENANT;
 </script>
 
 <style>
-.wrapper {
+.manage-users-wrapper {
 	margin: 20px;
 }
 </style>
