@@ -8,8 +8,7 @@ app.use(router);
 
 app.use(descope, {
 	projectId: process.env.VUE_APP_DESCOPE_PROJECT_ID || '',
-	baseUrl: process.env.VUE_APP_DESCOPE_BASE_URL || '',
-	sessionTokenViaCookie: true
+	baseUrl: process.env.VUE_APP_DESCOPE_BASE_URL || ''
 });
 
 const sdk = getSdk();
