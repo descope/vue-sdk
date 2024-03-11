@@ -247,6 +247,8 @@ Run the following command in the root of the project to build and run the exampl
 npm i && npm start
 ```
 
+Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+
 ### Example Optional Env Variables
 
 See the following table for customization environment variables for the example app:

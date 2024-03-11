@@ -20,7 +20,7 @@
 		"dist"
 	],
 	"scripts": {
-		"start": "vue-cli-service serve",
+		"start": "vue-cli-service serve --port 3000",
 		"build": "rollup -m -c rollup.config.js",
 		"test": "vue-cli-service test:unit",
 		"lint": "vue-cli-service lint",
