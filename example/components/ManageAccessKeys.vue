@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-	<div class="manage-roles-wrapper">
+	<div class="manage-access-keys-wrapper">
 		<h1>Manage Access Keys</h1>
 		<AccessKeyManagement :tenant="tenant" />
 	</div>
@@ -13,7 +13,7 @@ const tenant = process.env.VUE_APP_DESCOPE_TENANT;
 </script>
 
 <style>
-.manage-roles-wrapper {
+.manage-access-keys-wrapper {
 	margin: 20px;
 }
 </style>

@@ -8,6 +8,7 @@ jest.mock('../src/hooks', () => ({
 	useSession: () => ({})
 }));
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 globalThis.Response = <any>class {};
 
 describe('AccessKeyManagement.vue', () => {
