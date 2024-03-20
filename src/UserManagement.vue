@@ -7,6 +7,7 @@
 			:theme.attr="theme"
 			:tenant.attr="tenant"
 			:debug.attr="debug"
+			widget-id="user-management-widget"
 		/>
 	</div>
 </template>

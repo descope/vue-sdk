@@ -19,9 +19,6 @@ describe('UserManagement.vue', () => {
 	});
 
 	it('renders a widget with the correct props', () => {
-		const errorTransformer = (error: { text: string; type: string }) => {
-			return error.text || error.type;
-		};
 		const wrapper = mount(UserManagement, {
 			props: {
 				tenant: 'test-tenant',
