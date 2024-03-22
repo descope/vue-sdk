@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '@vue/test-utils';
-import UserManagement from '../src/UserManagement.vue';
+import RoleManagement from '../src/RoleManagement.vue';
 
 jest.mock('../src/hooks', () => ({
 	useOptions: () => ({ projectId: 'project1', baseUrl: 'baseUrl' }),
@@ -10,16 +10,16 @@ jest.mock('../src/hooks', () => ({
 
 globalThis.Response = <any>class {};
 
-describe('UserManagement.vue', () => {
+describe('RoleManagement.vue', () => {
 	it('renders the widget', () => {
-		const wrapper = shallowMount(UserManagement, {
+		const wrapper = shallowMount(RoleManagement, {
 			props: { tenant: 'flow1' }
 		});
-		expect(wrapper.find('descope-user-management-widget').exists()).toBe(true);
+		expect(wrapper.find('descope-role-management-widget').exists()).toBe(true);
 	});
 
 	it('renders a widget with the correct props', () => {
-		const wrapper = mount(UserManagement, {
+		const wrapper = mount(RoleManagement, {
 			props: {
 				tenant: 'test-tenant',
 				theme: 'test-theme',
@@ -28,7 +28,7 @@ describe('UserManagement.vue', () => {
 			}
 		});
 
-		const descopeWc = wrapper.find('descope-user-management-widget');
+		const descopeWc = wrapper.find('descope-role-management-widget');
 		expect(descopeWc.exists()).toBe(true);
 		expect(descopeWc.attributes('project-id')).toBe('project1');
 		expect(descopeWc.attributes('base-url')).toBe('baseUrl');

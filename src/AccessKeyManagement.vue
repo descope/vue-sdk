@@ -1,19 +1,19 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
 	<div>
-		<descope-user-management-widget
+		<descope-access-key-management-widget
 			:project-id="projectId"
 			:base-url="baseUrl"
 			:theme.attr="theme"
 			:tenant.attr="tenant"
 			:debug.attr="debug"
-			widget-id="user-management-widget"
+			widget-id="access-key-management-widget"
 		/>
 	</div>
 </template>
 
 <script setup lang="ts">
-import '@descope/user-management-widget';
+import '@descope/access-key-management-widget';
 import { useOptions } from './hooks';
 
 defineProps({
