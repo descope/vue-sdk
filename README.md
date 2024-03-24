@@ -313,7 +313,7 @@ const tenant = 'tenantId';
 ```
 
 Example:
-[Manage Roles](./example/components/ManageRoles.tsx)
+[Manage Roles](./example/components/ManageRoles.vue)
 
 #### Access Key Management
 
@@ -350,7 +350,7 @@ const tenant = 'tenant-id';
 ```
 
 Example:
-[Manage Access Keys](./examples/app/ManageAccessKeys.tsx)
+[Manage Access Keys](./examples/app/ManageAccessKeys.vue)
 
 ## Code Example
 
