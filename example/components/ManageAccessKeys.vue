@@ -2,7 +2,10 @@
 <template>
 	<div class="manage-access-keys-wrapper">
 		<h1>Manage Access Keys</h1>
-		<AccessKeyManagement :tenant="tenant" />
+		<AccessKeyManagement
+			:tenant="tenant"
+			widget-id="access-key-management-widget"
+		/>
 	</div>
 </template>
 
