@@ -232,7 +232,7 @@ Important Note:
 
 #### User Management
 
-The `User Management` widget will let you embed a user table in your site to view and take action.
+The `UserManagement` widget will let you embed a user table in your site to view and take action.
 
 The widget lets you:
 
@@ -251,23 +251,12 @@ Note:
 
 ```vue
 <template>
-	<div class="manage-users-wrapper">
-		<h1>Manage Users</h1>
-		<UserManagement :tenant="tenant" />
-	</div>
+		<UserManagement tenant="tenant-id" />
 </template>
 
 <script setup>
 import { UserManagement } from '@descope/vue-sdk';
-
-const tenant = 'tenantId';
 </script>
-
-<style>
-.manage-users-wrapper {
-	margin: 20px;
-}
-</style>
 ```
 
 Example:
@@ -275,7 +264,7 @@ Example:
 
 #### Role Management
 
-The `Role Management` widget will let you embed a role table in your site to view and take action.
+The `RoleManagement` widget will let you embed a role table in your site to view and take action.
 
 The widget lets you:
 
@@ -293,23 +282,12 @@ Note:
 ```vue
 import { RoleManagement } from '@descope/react-sdk'; ...
 <template>
-	<div class="manage-roles-wrapper">
-		<h1>Manage Roles</h1>
-		<RoleManagement :tenant="tenant" />
-	</div>
+		<RoleManagement tenant="tenant-id" />
 </template>
 
 <script setup>
 import { RoleManagement } from '@descope/vue-sdk';
-
-const tenant = 'tenantId';
 </script>
-
-<style>
-.manage-roles-wrapper {
-	margin: 20px;
-}
-</style>
 ```
 
 Example:
@@ -317,7 +295,7 @@ Example:
 
 #### Access Key Management
 
-The `Access Key Management` widget will let you embed an access key table in your site to view and take action.
+The `AccessKeyManagement` widget will let you embed an access key table in your site to view and take action.
 
 The widget lets you:
 
@@ -330,16 +308,11 @@ The widget lets you:
 ```vue
 import { AccessKeyManagement } from '@descope/react-sdk'; ...
 <template>
-	<div class="manage-access-keys-wrapper">
-		<h1>Manage Access Keys</h1>
-		<AccessKeyManagement :tenant="tenant" />
-	</div>
+		<AccessKeyManagement tenant="tenant-id" />
 </template>
 
 <script setup>
 import { AccessKeyManagement } from '@descope/vue-sdk';
-
-const tenant = 'tenant-id';
 </script>
 
 <style>
