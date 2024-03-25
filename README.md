@@ -280,7 +280,6 @@ Note:
 ###### Usage
 
 ```vue
-import { RoleManagement } from '@descope/react-sdk'; ...
 <template>
 	<RoleManagement tenant="tenant-id" />
 </template>
@@ -306,7 +305,6 @@ The widget lets you:
 ###### Usage
 
 ```vue
-import { AccessKeyManagement } from '@descope/react-sdk'; ...
 <template>
 	<AccessKeyManagement tenant="tenant-id" />
 </template>
