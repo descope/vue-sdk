@@ -222,6 +222,104 @@ Descope SDK is automatically refreshes the session token when it is about to exp
 If the Descope project settings are configured to manage tokens in cookies.
 you must also configure a custom domain, and set it as the `baseUrl` to the `descope` plugin. See the above [`plugin` usage](#add-descope-plugin-to-your-application) for usage example.
 
+### Widgets
+
+Widgets are components that allow you to expose management features for tenant-based implementation. In certain scenarios, your customers may require the capability to perform managerial actions independently, alleviating the necessity to contact you. Widgets serve as a feature enabling you to delegate these capabilities to your customers in a modular manner.
+
+Important Note:
+
+- For the user to be able to use the widget, they need to be assigned the `Tenant Admin` Role.
+
+#### User Management
+
+The `UserManagement` widget will let you embed a user table in your site to view and take action.
+
+The widget lets you:
+
+- Create a new user
+- Edit an existing user
+- Activate / disable an existing user
+- Reset an existing user's password
+- Remove an existing user's passkey
+- Delete an existing user
+
+Note:
+
+- Custom fields also appear in the table.
+
+###### Usage
+
+```vue
+<template>
+	<UserManagement tenant="tenant-id" widget-id="user-management-widget" />
+</template>
+
+<script setup>
+import { UserManagement } from '@descope/vue-sdk';
+</script>
+```
+
+Example:
+[Manage Users](./example/components/ManageUsers.vue)
+
+#### Role Management
+
+The `RoleManagement` widget will let you embed a role table in your site to view and take action.
+
+The widget lets you:
+
+- Create a new role
+- Change an existing role's fields
+- Delete an existing role
+
+Note:
+
+- The `Editable` field is determined by the user's access to the role - meaning that project-level roles are not editable by tenant level users.
+- You need to pre-define the permissions that the user can use, which are not editable in the widget.
+
+###### Usage
+
+```vue
+<template>
+	<RoleManagement tenant="tenant-id" widget-id="role-management-widget" />
+</template>
+
+<script setup>
+import { RoleManagement } from '@descope/vue-sdk';
+</script>
+```
+
+Example:
+[Manage Roles](./example/components/ManageRoles.vue)
+
+#### Access Key Management
+
+The `AccessKeyManagement` widget will let you embed an access key table in your site to view and take action.
+
+The widget lets you:
+
+- Create a new access key
+- Activate / deactivate an existing access key
+- Delete an exising access key
+
+###### Usage
+
+```vue
+<template>
+	<AccessKeyManagement
+		tenant="tenant-id"
+		widget-id="access-key-management-widget"
+	/>
+</template>
+
+<script setup>
+import { AccessKeyManagement } from '@descope/vue-sdk';
+</script>
+```
+
+Example:
+[Manage Access Keys](./example/components/ManageAccessKeys.vue)
+
 ## Code Example
 
 You can find an example Vue app in the [example folder](./example).
