@@ -14,7 +14,7 @@ globalThis.Response = <any>class {};
 describe('AccessKeyManagement.vue', () => {
 	it('renders the widget', () => {
 		const wrapper = shallowMount(AccessKeyManagement, {
-			props: { tenant: 'flow1' }
+			props: { tenant: 'flow1', widgetId: 'widget1' }
 		});
 		expect(wrapper.find('descope-access-key-management-widget').exists()).toBe(
 			true
@@ -25,6 +25,7 @@ describe('AccessKeyManagement.vue', () => {
 		const wrapper = mount(AccessKeyManagement, {
 			props: {
 				tenant: 'test-tenant',
+				widgetId: 'widget1',
 				theme: 'test-theme',
 				locale: 'test-locale',
 				debug: true
@@ -37,6 +38,7 @@ describe('AccessKeyManagement.vue', () => {
 		expect(descopeWc.attributes('base-url')).toBe('baseUrl');
 		expect(descopeWc.attributes('theme')).toBe('test-theme');
 		expect(descopeWc.attributes('tenant')).toBe('test-tenant');
+		expect(descopeWc.attributes('widget-id')).toBe('widget1');
 		expect(descopeWc.attributes('debug')).toBe('true');
 	});
 });
