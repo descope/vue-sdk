@@ -251,7 +251,7 @@ Note:
 
 ```vue
 <template>
-		<UserManagement tenant="tenant-id" />
+	<UserManagement tenant="tenant-id" />
 </template>
 
 <script setup>
@@ -282,7 +282,7 @@ Note:
 ```vue
 import { RoleManagement } from '@descope/react-sdk'; ...
 <template>
-		<RoleManagement tenant="tenant-id" />
+	<RoleManagement tenant="tenant-id" />
 </template>
 
 <script setup>
@@ -308,7 +308,7 @@ The widget lets you:
 ```vue
 import { AccessKeyManagement } from '@descope/react-sdk'; ...
 <template>
-		<AccessKeyManagement tenant="tenant-id" />
+	<AccessKeyManagement tenant="tenant-id" />
 </template>
 
 <script setup>
