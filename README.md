@@ -318,7 +318,7 @@ import { AccessKeyManagement } from '@descope/vue-sdk';
 ```
 
 Example:
-[Manage Access Keys](./examples/app/ManageAccessKeys.vue)
+[Manage Access Keys](./examples/components/ManageAccessKeys.vue)
 
 ## Code Example
 
