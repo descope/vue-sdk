@@ -251,7 +251,7 @@ Note:
 
 ```vue
 <template>
-	<UserManagement tenant="tenant-id" />
+	<UserManagement tenant="tenant-id" widget-id="user-management-widget" />
 </template>
 
 <script setup>
@@ -281,7 +281,7 @@ Note:
 
 ```vue
 <template>
-	<RoleManagement tenant="tenant-id" />
+	<RoleManagement tenant="tenant-id" widget-id="role-management-widget" />
 </template>
 
 <script setup>
@@ -306,7 +306,10 @@ The widget lets you:
 
 ```vue
 <template>
-	<AccessKeyManagement tenant="tenant-id" />
+	<AccessKeyManagement
+		tenant="tenant-id"
+		widget-id="access-key-management-widget"
+	/>
 </template>
 
 <script setup>
