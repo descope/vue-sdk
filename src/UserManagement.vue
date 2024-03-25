@@ -7,7 +7,7 @@
 			:theme.attr="theme"
 			:tenant.attr="tenant"
 			:debug.attr="debug"
-			widget-id="user-management-widget"
+			:widget-id="widgetId"
 		/>
 	</div>
 </template>
@@ -18,6 +18,10 @@ import { useOptions } from './hooks';
 
 defineProps({
 	tenant: {
+		type: String,
+		required: true
+	},
+	widgetId: {
 		type: String,
 		required: true
 	},

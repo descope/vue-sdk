@@ -2,7 +2,7 @@
 <template>
 	<div class="manage-users-wrapper">
 		<h1>Manage Users</h1>
-		<UserManagement :tenant="tenant" />
+		<UserManagement :tenant="tenant" widget-id="user-management-widget" />
 	</div>
 </template>
 

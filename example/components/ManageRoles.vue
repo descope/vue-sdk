@@ -2,7 +2,7 @@
 <template>
 	<div class="manage-roles-wrapper">
 		<h1>Manage Roles</h1>
-		<RoleManagement :tenant="tenant" />
+		<RoleManagement :tenant="tenant" widget-id="role-management-widget" />
 	</div>
 </template>
 
