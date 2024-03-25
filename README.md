@@ -312,12 +312,6 @@ The widget lets you:
 <script setup>
 import { AccessKeyManagement } from '@descope/vue-sdk';
 </script>
-
-<style>
-.manage-access-keys-wrapper {
-	margin: 20px;
-}
-</style>
 ```
 
 Example:
