@@ -46,7 +46,7 @@
 		"vue": ">=3"
 	},
 	"optionalDependencies": {
-		"@descope/web-js-sdk": "1.0.11"
+		"@descope/web-js-sdk": ">=1.10.24"
 	},
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^11.1.0",
