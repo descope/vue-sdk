@@ -8,5 +8,7 @@ export {
 	getJwtPermissions,
 	getJwtRoles,
 	getRefreshToken,
-	getSessionToken
+	getSessionToken,
+	isSessionTokenExpired,
+	isRefreshTokenExpired
 } from './sdk';
