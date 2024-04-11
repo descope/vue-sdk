@@ -322,6 +322,25 @@ import { AccessKeyManagement } from '@descope/vue-sdk';
 Example:
 [Manage Access Keys](./example/components/ManageAccessKeys.vue)
 
+#### Audit Management
+
+The `AuditManagement` widget will let you embed an audit table in your site.
+
+###### Usage
+
+```vue
+<template>
+	<AuditManagement tenant="tenant-id" widget-id="audit-management-widget" />
+</template>
+
+<script setup>
+import { AuditManagement } from '@descope/vue-sdk';
+</script>
+```
+
+Example:
+[Manage Audit](./example/components/ManageAudit.vue)
+
 ## Code Example
 
 You can find an example Vue app in the [example folder](./example).

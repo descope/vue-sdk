@@ -3,6 +3,7 @@ import { routeGuard } from '../src';
 import Home from './components/Home.vue';
 import Login from './components/Login.vue';
 import ManageAccessKeys from './components/ManageAccessKeys.vue';
+import ManageAudit from './components/ManageAudit.vue';
 import ManageRoles from './components/ManageRoles.vue';
 import ManageUsers from './components/ManageUsers.vue';
 
@@ -50,6 +51,11 @@ const router = createRouter({
 			path: '/manage-access-keys',
 			name: 'manage-access-keys',
 			component: ManageAccessKeys
+		},
+		{
+			path: '/manage-audit',
+			name: 'manage-audit',
+			component: ManageAudit
 		}
 	]
 });
