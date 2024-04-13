@@ -12,6 +12,7 @@
 			:telemetryKey.attr="telemetryKey"
 			:redirect-url="redirectUrl"
 			:auto-focus="autoFocus"
+			:store-last-authenticated-user="storeLastAuthenticatedUser"
 			:errorTransformer.prop="errorTransformer"
 			:form.attr="formStr"
 			:client.attr="clientStr"
@@ -88,7 +89,7 @@ const props = defineProps({
 	}
 });
 const emit = defineEmits(['success', 'error', 'ready']);
-const { projectId, baseUrl } = useOptions();
+const { projectId, baseUrl, storeLastAuthenticatedUser } = useOptions();
 const sdk = useDescope();
 
 const formStr = computed(() => (props.form ? JSON.stringify(props.form) : ''));
