@@ -308,9 +308,16 @@ The widget lets you:
 
 ```vue
 <template>
+	<!-- admin view: manage all tenant users' access keys -->
 	<AccessKeyManagement
 		tenant="tenant-id"
 		widget-id="access-key-management-widget"
+	/>
+
+	<!-- user view: mange access key for the logged-in tenant's user  -->
+	<AccessKeyManagement
+		tenant="tenant-id"
+		widget-id="user-access-key-management-widget"
 	/>
 </template>
 
