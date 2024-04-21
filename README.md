@@ -348,6 +348,27 @@ import { AuditManagement } from '@descope/vue-sdk';
 Example:
 [Manage Audit](./example/components/ManageAudit.vue)
 
+#### User Profile
+
+The `UserProfile` widget will let you embed a user profile component in your app and let the logged in user update his profile
+
+###### Usage
+
+```vue
+<template>
+	<UserProfile widget-id="audit-profile-widget" @logout="onLogout" />
+</template>
+
+<script setup>
+import { UserProfile } from '@descope/vue-sdk';
+
+const onLogout = () => (window.location.href = '/login');
+</script>
+```
+
+Example:
+[Manage Audit](./example/components/Profile.vue)
+
 ## Code Example
 
 You can find an example Vue app in the [example folder](./example).

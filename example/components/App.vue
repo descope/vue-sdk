@@ -6,6 +6,7 @@
 			<router-link to="/manage-roles">Manage Roles</router-link>
 			<router-link to="/manage-access-keys">Manage Access Keys</router-link>
 			<router-link to="/manage-audit">Manage Audit</router-link>
+			<router-link to="/user-profile">User Profile</router-link>
 			<router-link to="/login">Login</router-link>
 		</div>
 		<button v-if="isAuthenticated" @click="logout()">Logout</button>

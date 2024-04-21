@@ -6,6 +6,7 @@ import ManageAccessKeys from './components/ManageAccessKeys.vue';
 import ManageAudit from './components/ManageAudit.vue';
 import ManageRoles from './components/ManageRoles.vue';
 import ManageUsers from './components/ManageUsers.vue';
+import Profile from './components/Profile.vue';
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -56,6 +57,11 @@ const router = createRouter({
 			path: '/manage-audit',
 			name: 'manage-audit',
 			component: ManageAudit
+		},
+		{
+			path: '/user-profile',
+			name: 'userProfile',
+			component: Profile
 		}
 	]
 });
