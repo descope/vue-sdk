@@ -23,6 +23,29 @@ describe('plugin', () => {
 
 		plugin.install(app, options);
 
+		expect(createSdk).toHaveBeenCalledWith(
+			expect.objectContaining({
+				persistTokens: true,
+				autoRefresh: true,
+				storeLastAuthenticatedUser: true,
+				...options
+			})
+		);
+	});
+
+	it('should create sdk instance with the custom config', () => {
+		const provide = jest.fn();
+		const app = { provide } as any;
+		const options = {
+			projectId: 'pid',
+			baseUrl: 'burl',
+			sessionTokenViaCookie: true,
+			persistTokens: false,
+			storeLastAuthenticatedUser: true
+		};
+
+		plugin.install(app, options);
+
 		expect(createSdk).toHaveBeenCalledWith(expect.objectContaining(options));
 	});
 
