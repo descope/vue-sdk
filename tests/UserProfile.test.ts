@@ -1,6 +1,5 @@
 import { shallowMount, mount } from '@vue/test-utils';
-import AuditManagement from '../src/AuditManagement.vue';
-import { UserProfile } from '../src';
+import UserProfile from '../src/UserProfile.vuew';
 
 jest.mock('../src/hooks', () => ({
 	useOptions: () => ({ projectId: 'project1', baseUrl: 'baseUrl' }),
