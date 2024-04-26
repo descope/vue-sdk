@@ -4,7 +4,11 @@ import type { Ref } from 'vue';
 export type Options = {
 	projectId: string;
 	baseUrl?: string;
+	// If true, tokens will be stored on local storage
+	persistTokens?: boolean;
 	sessionTokenViaCookie?: boolean;
+	// If true, last authenticated user will be stored on local storage and can accessed with getUser function
+	storeLastAuthenticatedUser?: boolean;
 };
 
 export type Sdk = ReturnType<typeof createSdk>;

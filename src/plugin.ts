@@ -19,8 +19,8 @@ export const getSdk = () => externalSdk;
 export default {
 	install: function (app: App, options: Options) {
 		const sdk = createSdk({
-			...options,
 			persistTokens: true,
+			...options,
 			autoRefresh: true,
 			baseHeaders
 		});
