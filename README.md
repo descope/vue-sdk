@@ -252,7 +252,7 @@ Important Note:
 
 #### User Management
 
-The `UserManagement` widget will let you embed a user table in your site to view and take action.
+The `UserManagement` widget lets you embed a user table in your site to view and take action.
 
 The widget lets you:
 
@@ -284,7 +284,7 @@ Example:
 
 #### Role Management
 
-The `RoleManagement` widget will let you embed a role table in your site to view and take action.
+The `RoleManagement` widget lets you embed a role table in your site to view and take action.
 
 The widget lets you:
 
@@ -314,7 +314,7 @@ Example:
 
 #### Access Key Management
 
-The `AccessKeyManagement` widget will let you embed an access key table in your site to view and take action.
+The `AccessKeyManagement` widget lets you embed an access key table in your site to view and take action.
 
 The widget lets you:
 
@@ -349,7 +349,7 @@ Example:
 
 #### Audit Management
 
-The `AuditManagement` widget will let you embed an audit table in your site.
+The `AuditManagement` widget lets you embed an audit table in your site.
 
 ###### Usage
 
@@ -365,6 +365,34 @@ import { AuditManagement } from '@descope/vue-sdk';
 
 Example:
 [Manage Audit](./example/components/ManageAudit.vue)
+
+#### User Profile
+
+The `UserProfile` widget lets you embed a user profile component in your app and let the logged in user update his profile.
+
+The widget lets you:
+
+- Update user profile picture
+- Update user personal information
+- Update authentication methods
+- Logout
+
+###### Usage
+
+```vue
+<template>
+	<UserProfile widget-id="user-profile-widget" @logout="onLogout" />
+</template>
+
+<script setup>
+import { UserProfile } from '@descope/vue-sdk';
+
+const onLogout = () => (window.location.href = '/login');
+</script>
+```
+
+Example:
+[User Profile](./example/components/MyUserProfile.vue)
 
 ## Code Example
 
