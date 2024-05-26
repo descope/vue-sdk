@@ -37,12 +37,12 @@
 		]
 	},
 	"dependencies": {
-		"@descope/access-key-management-widget": "0.1.54",
-		"@descope/audit-management-widget": "0.1.17",
-		"@descope/role-management-widget": "0.1.52",
-		"@descope/user-management-widget": "0.4.54",
-		"@descope/user-profile-widget": "0.0.19",
-		"@descope/web-component": "3.11.13"
+		"@descope/access-key-management-widget": "0.1.74",
+		"@descope/audit-management-widget": "0.1.37",
+		"@descope/role-management-widget": "0.1.72",
+		"@descope/user-management-widget": "0.4.74",
+		"@descope/user-profile-widget": "0.0.40",
+		"@descope/web-component": "3.12.5"
 	},
 	"peerDependencies": {
 		"vue": ">=3"

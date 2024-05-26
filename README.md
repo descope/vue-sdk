@@ -425,10 +425,11 @@ Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
 
 See the following table for customization environment variables for the example app:
 
-| Env Variable             | Description                            | Default value     |
-| ------------------------ | -------------------------------------- | ----------------- |
-| VUE_APP_DESCOPE_FLOW_ID  | Which flow ID to use in the login page | **sign-up-or-in** |
-| VUE_APP_DESCOPE_BASE_URL | Custom Descope base URL                | None              |
+| Env Variable                    | Description                            | Default value     |
+| ------------------------------- | -------------------------------------- | ----------------- |
+| VUE_APP_DESCOPE_FLOW_ID         | Which flow ID to use in the login page | **sign-up-or-in** |
+| VUE_APP_DESCOPE_BASE_URL        | Custom Descope base URL                | None              |
+| VUE_APP_DESCOPE_BASE_STATIC_URL | Custom Descope base static URL         | None              |
 
 Example for `.env.local` file template:
 
@@ -439,6 +440,8 @@ VUE_APP_DESCOPE_PROJECT_ID="<Project-ID>"
 VUE_APP_DESCOPE_FLOW_ID=""
 # Descope base URL
 VUE_APP_DESCOPE_BASE_URL=""
+# Descope base static URL
+VUE_APP_DESCOPE_BASE_STATIC_URL=""
 ```
 
 ## Q & A

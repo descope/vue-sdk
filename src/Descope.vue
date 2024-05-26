@@ -4,6 +4,7 @@
 		<descope-wc
 			:project-id="projectId"
 			:base-url="baseUrl"
+			:base-static-url="baseStaticUrl"
 			:flow-id="flowId"
 			:theme.attr="theme"
 			:locale.attr="locale"
@@ -89,7 +90,8 @@ const props = defineProps({
 	}
 });
 const emit = defineEmits(['success', 'error', 'ready']);
-const { projectId, baseUrl, storeLastAuthenticatedUser } = useOptions();
+const { projectId, baseUrl, baseStaticUrl, storeLastAuthenticatedUser } =
+	useOptions();
 const sdk = useDescope();
 
 const formStr = computed(() => (props.form ? JSON.stringify(props.form) : ''));

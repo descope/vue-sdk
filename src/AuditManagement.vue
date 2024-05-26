@@ -4,6 +4,7 @@
 		<descope-audit-management-widget
 			:project-id="projectId"
 			:base-url="baseUrl"
+			:base-static-url="baseStaticUrl"
 			:theme.attr="theme"
 			:tenant.attr="tenant"
 			:debug.attr="debug"
@@ -33,5 +34,5 @@ defineProps({
 	}
 });
 
-const { projectId, baseUrl } = useOptions();
+const { projectId, baseUrl, baseStaticUrl } = useOptions();
 </script>

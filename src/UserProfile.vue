@@ -4,6 +4,7 @@
 		<descope-user-profile-widget
 			:project-id="projectId"
 			:base-url="baseUrl"
+			:base-static-url="baseStaticUrl"
 			:theme.attr="theme"
 			:debug.attr="debug"
 			:widget-id="widgetId"
@@ -32,5 +33,5 @@ defineProps({
 	}
 });
 
-const { projectId, baseUrl } = useOptions();
+const { projectId, baseUrl, baseStaticUrl } = useOptions();
 </script>

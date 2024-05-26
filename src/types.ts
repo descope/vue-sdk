@@ -4,6 +4,7 @@ import type { Ref } from 'vue';
 export type Options = {
 	projectId: string;
 	baseUrl?: string;
+	baseStaticUrl?: string;
 	// If true, tokens will be stored on local storage
 	persistTokens?: boolean;
 	sessionTokenViaCookie?: boolean;
