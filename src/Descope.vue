@@ -13,6 +13,7 @@
 			:telemetryKey.attr="telemetryKey"
 			:redirect-url="redirectUrl"
 			:auto-focus="autoFocus"
+			:validate-on-blur="validateOnBlur"
 			:store-last-authenticated-user="storeLastAuthenticatedUser"
 			:errorTransformer.prop="errorTransformer"
 			:form.attr="formStr"
@@ -77,6 +78,9 @@ const props = defineProps({
 		type: String
 	},
 	autoFocus: {
+		type: Boolean || String
+	},
+	validateOnBlur: {
 		type: Boolean
 	},
 	errorTransformer: {
