@@ -32,6 +32,7 @@ import { baseHeaders } from './constants';
 import { RequestConfig } from '@descope/core-js-sdk';
 import { computed } from 'vue';
 import { getGlobalSdk } from './sdk';
+import type { JWTResponse, ErrorResponse } from './types';
 
 DescopeWcClass.sdkConfigOverrides = {
 	// Overrides the web-component's base headers to indicate usage via the React SDK
@@ -93,7 +94,12 @@ const props = defineProps({
 		type: Object
 	}
 });
-const emit = defineEmits(['success', 'error', 'ready']);
+// const emit = defineEmits(['success', 'error', 'ready']);
+const emit = defineEmits<{
+	(e: 'success', payload: CustomEvent<JWTResponse>): void;
+	(e: 'error', payload: CustomEvent<ErrorResponse>): void;
+	(e: 'ready', payload: CustomEvent<Record<string, never>>): void;
+}>();
 const { projectId, baseUrl, baseStaticUrl, storeLastAuthenticatedUser } =
 	useOptions();
 const sdk = useDescope();
@@ -102,7 +108,7 @@ const formStr = computed(() => (props.form ? JSON.stringify(props.form) : ''));
 const clientStr = computed(() =>
 	props.client ? JSON.stringify(props.client) : ''
 );
-const onSuccess = async (e: CustomEvent) => {
+const onSuccess = async (e: CustomEvent<JWTResponse>) => {
 	await sdk.httpClient.hooks?.afterRequest?.(
 		{} as RequestConfig,
 		new Response(JSON.stringify(e.detail))
@@ -110,7 +116,7 @@ const onSuccess = async (e: CustomEvent) => {
 	emit('success', e);
 };
 
-const onError = (e: Event) => emit('error', e);
+const onError = (e: CustomEvent<ErrorResponse>) => emit('error', e);
 
-const onReady = (e: Event) => emit('ready', e);
+const onReady = (e: CustomEvent<Record<string, never>>) => emit('ready', e);
 </script>

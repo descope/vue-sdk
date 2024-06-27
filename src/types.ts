@@ -14,6 +14,12 @@ export type Options = {
 
 export type Sdk = ReturnType<typeof createSdk>;
 
+type FlowResponse = Awaited<ReturnType<Sdk['flow']['next']>>;
+
+export type ErrorResponse = FlowResponse['error'];
+
+export type JWTResponse = FlowResponse['data']['authInfo'];
+
 export type UserData = Exclude<
 	Awaited<ReturnType<Sdk['me']>>['data'],
 	undefined
