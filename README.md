@@ -1,3 +1,10 @@
+# IMPORTANT NOTE: This repository is _DEPRECATED_.
+
+Descope Vue SDK has been moved to the [descope-js](https://github.com/descope/descope-js/tree/main/packages/sdks/vue-sdk) repoistory.
+
+---
+
+
 # Descope Vue SDK
 
 The Descope Vue SDK provides convenient access to the Descope for an application written on top of Vue.  
